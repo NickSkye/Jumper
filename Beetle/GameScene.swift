@@ -40,11 +40,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var time = CGFloat()
     var pauseRestart = SKSpriteNode()
     
+    //Instance of GameData
+    var gameData: GameData = GameData()
+    
     
     override func didMove(to view: SKView) {
         createScene()
-        
-       
         
         
         if UserDefaults.standard.object(forKey: "highestScore") != nil {

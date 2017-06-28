@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4112D5271F03A18600EA4BD3 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4112D5261F03A18600EA4BD3 /* GameData.m */; };
 		41B9BF301EFEC94800EC5B9B /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9BF2F1EFEC94800EC5B9B /* ProfileScreen.swift */; };
 		D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D9341E3483A900754A1A /* AppDelegate.swift */; };
 		D9E9D9371E3483AA00754A1A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9361E3483AA00754A1A /* GameScene.sks */; };
@@ -31,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4112D5211F039D5800EA4BD3 /* Flippys Flight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flippys Flight-Bridging-Header.h"; sourceTree = "<group>"; };
+		4112D5251F03A18600EA4BD3 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
+		4112D5261F03A18600EA4BD3 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
 		41B9BF2F1EFEC94800EC5B9B /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		D9E9D9311E3483A900754A1A /* Flippys Flight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flippys Flight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E9D9341E3483A900754A1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,9 @@
 				F37DE28F1EFAFD2700FE524A /* NewSkinScene.swift */,
 				F3BD4CFC1EFD69C50016DC52 /* BuyTokensScene.swift */,
 				41B9BF2F1EFEC94800EC5B9B /* ProfileScreen.swift */,
+				4112D5211F039D5800EA4BD3 /* Flippys Flight-Bridging-Header.h */,
+				4112D5251F03A18600EA4BD3 /* GameData.h */,
+				4112D5261F03A18600EA4BD3 /* GameData.m */,
 			);
 			name = FlippysFlight;
 			path = Beetle;
@@ -159,6 +166,7 @@
 					D9E9D9301E3483A900754A1A = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 9KR276P772;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
@@ -224,6 +232,7 @@
 				D9E9D93B1E3483AA00754A1A /* GameScene.swift in Sources */,
 				F3BD4CFD1EFD69C50016DC52 /* BuyTokensScene.swift in Sources */,
 				D9E9D93D1E3483AA00754A1A /* GameViewController.swift in Sources */,
+				4112D5271F03A18600EA4BD3 /* GameData.m in Sources */,
 				D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */,
 				F32ABE3F1EEB5863000A217E /* ShopScene.swift in Sources */,
 				F37DE28A1EF8E35200FE524A /* ProfileScene.swift in Sources */,
@@ -350,6 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Flippys Flight.entitlements";
 				DEVELOPMENT_TEAM = 9KR276P772;
 				INFOPLIST_FILE = Beetle/Info.plist;
@@ -357,6 +367,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IntelliSkye.flippysflight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Beetle/Flippys Flight-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -366,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Flippys Flight.entitlements";
 				DEVELOPMENT_TEAM = 9KR276P772;
 				INFOPLIST_FILE = Beetle/Info.plist;
@@ -373,6 +386,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IntelliSkye.flippysflight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Beetle/Flippys Flight-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
