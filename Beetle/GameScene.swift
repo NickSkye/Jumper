@@ -294,6 +294,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameStarted = false
         score = 0
         tokens = 0
+        gameData.reset()
         createScene()
     }
     
