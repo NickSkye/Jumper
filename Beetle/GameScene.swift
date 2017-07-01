@@ -470,24 +470,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Does not return a value. Meant to be run while the game is being played and the score change
      */
     func processScore(){
-        //Check if highScore is nil, if yes, set the value to 0
-        if gameData.highScore != nil {
+        //Set hScore as the value that stores the users highest score
+        let hScore = gameData.highScore
             
-            //Set hScore as the value that stores the users highest score
-            let hScore = gameData.highScore
-            
-            //Check if the users high score is greater than the score they currently have in-game
-            //If high score is less than current score then reset the high score to match the current score.
-            if hScore < Int(scoreLbl.text!)!{
+        //Check if the users high score is greater than the score they currently have in-game
+        //If high score is less than current score then reset the high score to match the current score.
+        if hScore < Int(scoreLbl.text!)!{
                 
-                //Set current in-game score to a variable to be used for setting the high score
-                let cScore = Int(scoreLbl.text!)
-                gameData.highScore = cScore!
-            }
-        }else{
-            //Setting gameData highscore to 0 if there is no current value
-            gameData.highScore = 0
+            //Set current in-game score to a variable to be used for setting the high score
+            let cScore = Int(scoreLbl.text!)
+            gameData.highScore = cScore!
         }
+        
 
     }
     
@@ -498,15 +492,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      */
     func processTokens(){
         
-        //Check if the current coin count is null
-        if gameData.coins != nil {
-            let cTokens = gameData.coins
-            let tTokens = gameData.totalCoins + Int(cTokens)
+        let cTokens = gameData.coins
+        let tTokens = gameData.totalCoins + Int(cTokens)
             
-            gameData.totalCoins = Int(tTokens)
-        }else{
-            gameData.coins = 0
-        }
+        gameData.totalCoins = Int(tTokens)
+
     }
 }
 
