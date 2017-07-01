@@ -294,7 +294,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameStarted = false
         score = 0
         tokens = 0
+        
+        //Resets data in the reset function in GameData.m
         gameData.reset()
+        
         createScene()
     }
     
@@ -481,8 +484,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let cScore = Int(scoreLbl.text!)
             gameData.highScore = cScore!
         }
-        
-
     }
     
     /*
@@ -496,7 +497,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let tTokens = gameData.totalCoins + Int(cTokens)
             
         gameData.totalCoins = Int(tTokens)
-
     }
 }
 

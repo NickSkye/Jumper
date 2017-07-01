@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GameData : NSObject
+@interface GameData : NSObject <NSCoding>
 
 //Instance Variables: Kept track locally in each game instance then added to Permanent variables below.
 @property (assign, nonatomic) long score;
