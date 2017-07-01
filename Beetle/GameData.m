@@ -16,10 +16,30 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] init];
+        sharedInstance = [self loadInstance];
     });
     
     return sharedInstance;
+}
+
++ (NSString*) filePath
+{
+    static NSString* filePath = nil;
+    if(!filePath){
+        filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject ]stringByAppendingPathComponent:@"gameData"];
+    }
+    return filePath;
+}
+
++ (instancetype)loadInstance
+{
+    NSData* decodedData = [NSData dataWithContentsOfFile: [GameData filePath]];
+    if (decodedData) {
+        GameData* gameData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
+        return gameData;
+    }
+    
+    return [[GameData alloc] init];
 }
 
 //Key variables for GameData
