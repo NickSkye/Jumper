@@ -295,6 +295,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = 0
         tokens = 0
         
+        //Saves data before reset
+        gameData.save()
+        
         //Resets data in the reset function in GameData.m
         gameData.reset()
         

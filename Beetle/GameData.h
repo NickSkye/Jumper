@@ -29,5 +29,6 @@
 //Defaults for Cocoa Touch Class
 +(instancetype)sharedGameData;
 -(void)reset;
+-(void)save;
 
 @end

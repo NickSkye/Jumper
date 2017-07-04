@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4112D5271F03A18600EA4BD3 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4112D5261F03A18600EA4BD3 /* GameData.m */; };
+		4112D52A1F0BE78200EA4BD3 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4112D5291F0BE78200EA4BD3 /* KeychainWrapper.m */; };
 		41B9BF301EFEC94800EC5B9B /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9BF2F1EFEC94800EC5B9B /* ProfileScreen.swift */; };
 		D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D9341E3483A900754A1A /* AppDelegate.swift */; };
 		D9E9D9371E3483AA00754A1A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9361E3483AA00754A1A /* GameScene.sks */; };
@@ -35,6 +36,8 @@
 		4112D5211F039D5800EA4BD3 /* Flippys Flight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flippys Flight-Bridging-Header.h"; sourceTree = "<group>"; };
 		4112D5251F03A18600EA4BD3 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		4112D5261F03A18600EA4BD3 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
+		4112D5281F0BE78200EA4BD3 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		4112D5291F0BE78200EA4BD3 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		41B9BF2F1EFEC94800EC5B9B /* ProfileScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		D9E9D9311E3483A900754A1A /* Flippys Flight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flippys Flight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E9D9341E3483A900754A1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 		D9E9D9331E3483A900754A1A /* FlippysFlight */ = {
 			isa = PBXGroup;
 			children = (
+				4112D5281F0BE78200EA4BD3 /* KeychainWrapper.h */,
+				4112D5291F0BE78200EA4BD3 /* KeychainWrapper.m */,
 				F32ABE3A1EEA6A6D000A217E /* gno.mp3 */,
 				F32ABE3C1EEB57A4000A217E /* CoinSound.mp3 */,
 				D9E9D9341E3483A900754A1A /* AppDelegate.swift */,
@@ -235,6 +240,7 @@
 				4112D5271F03A18600EA4BD3 /* GameData.m in Sources */,
 				D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */,
 				F32ABE3F1EEB5863000A217E /* ShopScene.swift in Sources */,
+				4112D52A1F0BE78200EA4BD3 /* KeychainWrapper.m in Sources */,
 				F37DE28A1EF8E35200FE524A /* ProfileScene.swift in Sources */,
 				41B9BF301EFEC94800EC5B9B /* ProfileScreen.swift in Sources */,
 			);
