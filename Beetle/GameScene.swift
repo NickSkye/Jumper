@@ -129,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gcBtn.removeFromParent()
             }
         
-        }        //
+        }        
         
         
         
