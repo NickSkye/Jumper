@@ -319,7 +319,7 @@ extension GameScene{
         wallPair = SKNode()
         wallPair.name = "wallPair"
         
-        let topWall = SKSpriteNode(imageNamed: "pillar")
+        let topWall = SKSpriteNode(imageNamed: "crane")
         let btmWall = SKSpriteNode(imageNamed: "pillar")
         
         let randomWidth = random(min: 380, max: 440) //(min: (0.516 * self.frame.height), max: (0.598 * self.frame.height))
@@ -347,7 +347,7 @@ extension GameScene{
         btmWall.physicsBody?.affectedByGravity = false
         btmWall.name = "bottomwall"
         
-        topWall.zRotation = CGFloat(M_PI)
+        //topWall.zRotation = CGFloat(M_PI)
         
         //Randomly removes top or bottom wall or both// can change to different type of wall
         let randomTopWall = Int(random(min: 0, max: 20))

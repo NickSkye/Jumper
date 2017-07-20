@@ -66,11 +66,29 @@ class GameViewController: UIViewController, VungleSDKDelegate {
         
     }
     
+    func vungleSDKwillCloseAdWithViewInfo(viewInfo: [NSObject : AnyObject]!, willPresentProductSheet: Bool) {
+        
+        print("vungleSDKwillCloseAdWithViewInfo")
+        
+    }
     
+    func vungleSDKwillShowAd() {
+        
+        print("vungleSDKwillShowAd")
+        
+    }
+    
+    func vungleSDKAdPlayableChanged(isAdPlayable:Bool) {
+        
+        print("vungleSDKAdPlayableChanged")
+        
+    }
+    
+    /*
     func vungleSDKwillCloseAd(withViewInfo viewInfo: [AnyHashable : Any]!, willPresentProductSheet: Bool){
         print(viewInfo)
     }
-    
+    */
       override var shouldAutorotate: Bool {
         return false
     }
