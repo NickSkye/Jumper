@@ -12,7 +12,9 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if self.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+            print("ISAVAIL")
+        }
         
         // Register to receive notification
         NotificationCenter.default.addObserver(self, selector: #selector(self.playVungleAd), name: notificationName, object: nil)
@@ -66,22 +68,14 @@ class GameViewController: UIViewController, VungleSDKDelegate {
         
     }
     
-    func vungleSDKwillCloseAdWithViewInfo(viewInfo: [NSObject : AnyObject]!, willPresentProductSheet: Bool) {
-        
-        print("vungleSDKwillCloseAdWithViewInfo")
-        
+    func vungleSDKWillCloseAd(withViewInfo viewInfo: [AnyHashable : Any]!) {
+        print("__________vungleSDKWillCloseAd")
     }
-    
     func vungleSDKwillShowAd() {
-        
-        print("vungleSDKwillShowAd")
-        
+        print("__________vungleSDKwillShowAd")
     }
-    
     func vungleSDKAdPlayableChanged(isAdPlayable:Bool) {
-        
-        print("vungleSDKAdPlayableChanged")
-        
+        print("__________vungleSDKAdPlayableChanged")
     }
     
     /*
