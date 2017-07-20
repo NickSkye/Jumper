@@ -15,6 +15,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let chomp = SKAction.playSoundFileNamed("chomp.mp3", waitForCompletion: false)
     let pop = SKAction.playSoundFileNamed("bubblepop.mp3", waitForCompletion: false)
     
+    
+    let VISCOSITY: CGFloat = 6 //Increase to make the water "thicker/stickier," creating more friction.
+    let BUOYANCY: CGFloat = 0.4 //Slightly increase to make the object "float up faster," more buoyant.
+    let OFFSET: CGFloat = 70
+    var water = SKSpriteNode()
     var hardTouch = false
     var force = CGFloat()
     var score = Int(0)
@@ -43,7 +48,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var logoImg = SKSpriteNode()
     var wallPair = SKNode()
     var bigBirdObstacle = SKNode()
+    var waterObstacle = SKNode()
     var moveAndRemove = SKAction()
+    var moveAndRemoveWater = SKAction()
+    var moveWater = SKAction()
     var moveAndRemoveBigBird = SKAction()
    var movePipes = SKAction()
     var moveBigBird = SKAction()
@@ -57,8 +65,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var repeatActionbird = SKAction()
     var delay = SKAction()
     var delayBigBird = SKAction()
+    var waterdelay = SKAction()
     var SpawnDelay = SKAction()
     var SpawnDelayBigBird = SKAction()
+    var spawnDelayWater = SKAction()
+    var spawnDelayWaterForever = SKAction()
+    var spawnWater = SKAction()
     var spawnDelayForever = SKAction()
     var spawnDelayBigBirdForever = SKAction()
     var spawn = SKAction()
@@ -208,6 +220,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 })
                 
+                spawnWater = SKAction.run({
+                    () in
+                    self.waterObstacle = self.createWater()
+                    self.addChild(self.waterObstacle)
+                    
+                    
+                })
+                
                 
                 //runs spawn and creates new pipes/walls and all items such as coins and boosts and sabers
                 delay = SKAction.wait(forDuration: 1.5)
@@ -222,6 +242,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spawnDelayBigBirdForever = SKAction.repeatForever(SpawnDelayBigBird)
                 self.run(spawnDelayBigBirdForever)
                 
+                
+                //run and spawn water
+                
+                
+                waterdelay = SKAction.wait(forDuration: 10.0)
+                spawnDelayWater = SKAction.sequence([spawnWater, waterdelay])
+                
+                spawnDelayWaterForever = SKAction.repeatForever(spawnDelayWater)
+                self.run(spawnDelayWaterForever)
                 
                 //moves pipes/walls and all items such as coins and boosts and sabers across and off the screen
                 distance = CGFloat(self.frame.width + wallPair.frame.width)
@@ -238,6 +267,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                 bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: (0.041 * self.frame.height)))
+                
+                
+                //moves water
+                var waterWaitdelay = SKAction.wait(forDuration: 10.0)
+                moveWater = SKAction.moveTo(y: self.frame.midY / 2, duration: 3.0)
+                let removeWater = SKAction.removeFromParent()
+                moveAndRemoveWater = SKAction.sequence([moveWater, waterWaitdelay, removeWater])
+                
+                
+                
+                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: (0.041 * self.frame.height)))
+                
                 /*
                 if hardTouch == true {
                     bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: (0.051 * self.frame.height)))
@@ -591,6 +633,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.bird = createBird(birdType: birdType)
         self.addChild(bird)
+        
+        
         createInvincibleBall()
         invincibleBall.alpha = 0.0
         //ANIMATE THE BIRD AND REPEAT THE ANIMATION FOREVER

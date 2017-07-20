@@ -14,6 +14,7 @@ struct CollisionBitMask {
     static let killerPillarCategory:UInt32 = 0x1 << 6
     static let bigBirdCategory:UInt32 = 0x1 << 7
     static let invincibleCategory:UInt32 = 0x1 << 8
+    static let waterCategory:UInt32 = 0x1 << 9
 }
 
 
@@ -33,7 +34,7 @@ extension GameScene{
         bird.physicsBody?.restitution = 0
         bird.physicsBody?.categoryBitMask = CollisionBitMask.birdCategory
         bird.physicsBody?.collisionBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.groundCategory
-        bird.physicsBody?.contactTestBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.flowerCategory | CollisionBitMask.groundCategory | CollisionBitMask.boostCategory | CollisionBitMask.killerPillarCategory | CollisionBitMask.bigBirdCategory
+        bird.physicsBody?.contactTestBitMask = CollisionBitMask.pillarCategory | CollisionBitMask.flowerCategory | CollisionBitMask.groundCategory | CollisionBitMask.boostCategory | CollisionBitMask.killerPillarCategory | CollisionBitMask.bigBirdCategory | CollisionBitMask.waterCategory
         bird.physicsBody?.affectedByGravity = false
         bird.physicsBody?.isDynamic = true
         print("\(self.frame.width) X \(self.frame.height)")
@@ -411,6 +412,32 @@ extension GameScene{
         wallPair.run(moveAndRemove)
         
         return wallPair
+    }
+    
+    func createWater() -> SKNode {
+        water = SKSpriteNode(color: UIColor.cyan, size: CGSize(width: self.size.width, height: self.frame.height / 2))
+    
+        water.position = CGPoint(x: self.size.width/2.0, y: 0)
+        water.alpha = 0.5
+       // self.addChild(water)
+        
+        
+        waterObstacle = SKNode()
+        waterObstacle.name = "water"
+        waterObstacle.zPosition = 10
+        let randomWater = Int(random(min: 0, max: 2))
+        if randomWater == 1 && score > 5{
+            waterObstacle.addChild(water)
+            self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
+            print("WATER OBSTACLE CREATED RANDOM")
+            
+        }
+        //waterObstacle.addChild(water)
+        print("WATER OBSTACLE CREATED")
+        
+        
+        waterObstacle.run(moveAndRemoveWater)
+        return waterObstacle
     }
     
     // Create bigger bird
