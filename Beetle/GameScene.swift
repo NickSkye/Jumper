@@ -84,11 +84,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameData: GameData = GameData()
     var isTouching = false
     
+    //Notification for iCloud
+    let cloudNotification = Notification.Name(SSGameDataUpdatedFromiCloud)
+    
     override func didMove(to view: SKView) {
         createScene()
-        
-        
-        
         
         if UserDefaults.standard.object(forKey: "highestScore") != nil {
             print("ERROR1")

@@ -209,6 +209,15 @@ extension GameScene{
         return highscoreLbl
     }
     
+    //Updates UI based on values from iCloud
+    func updateUI(){
+        //Updates highscoreLbl with GameData highscore
+        highscoreLbl.text = String(GameData.shared().highScore)
+        
+        //Updates tokenLbl with GameData coins
+        tokenLbl.text = String(GameData.shared().coins)
+    }
+    
     func createLogo() {
         logoImg = SKSpriteNode()
         logoImg = SKSpriteNode(imageNamed: "logo")
