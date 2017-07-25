@@ -386,8 +386,8 @@ extension GameScene{
             run(saberSound)
         }
         
-         let randomDoubleLaser = Int(random(min: 0, max: 25))
-        if randomDoubleLaser == 15 {
+         let randomDoubleLaser = Int(random(min: 0, max: 15))
+        if randomDoubleLaser == 10 {
             wallPair.removeAllChildren()
             run(saberSound)
             
