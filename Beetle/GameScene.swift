@@ -465,7 +465,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     pauseRestart.removeAllActions()
                     self.isPaused = false
                     
-                    //  MusicHelper.sharedHelper.playBackgroundMusic()
+                    //  MusicHelper.sharedHelper.playBackgroundMusic()//
                     pauseBtn.texture = SKTexture(imageNamed: "pause")
                     
                 }
