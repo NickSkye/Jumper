@@ -420,17 +420,17 @@ extension GameScene{
         water.position = CGPoint(x: self.size.width/2.0, y: 0)
         water.alpha = 0.5
        // self.addChild(water)
-        
+        water.name = "waternode"
         
         waterObstacle = SKNode()
         waterObstacle.name = "water"
         waterObstacle.zPosition = 10
         let randomWater = Int(random(min: 0, max: 2))
-        if randomWater == 1 && score > 5{
+        if birdType == "dicky"{
             waterObstacle.addChild(water)
             self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
             print("WATER OBSTACLE CREATED RANDOM")
-            
+            waterPresent = true
         }
         //waterObstacle.addChild(water)
         print("WATER OBSTACLE CREATED")

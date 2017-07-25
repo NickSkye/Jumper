@@ -25,6 +25,7 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
         // Call the GC authentication controller
         authenticateLocalPlayer()
         //checkGCLeaderboard()
+       // getScore()
         addScoreAndSubmitToGC()
         self.checkGCLeaderboard()
            }
@@ -43,8 +44,27 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
         skView.presentScene(scene, transition: SKTransition.doorway(withDuration: 3))
  */
     }
+    /*
+    func getScore() {
+        if (GKLocalPlayer.localPlayer().isAuthenticated) {
+            GKLeaderboard.loadLeaderboards { objects, error in
+                if let e = error {
+                    print(e)
+                } else {
+                    if let leaderboards = objects {
+                        for leaderboard in leaderboards {
+                            if let localPlayerScore = leaderboard.localPlayerScore {
+                                print(localPlayerScore)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
     
-    
+    */
     func assignbackground(){
         
         let background = UIImage(named: "city")

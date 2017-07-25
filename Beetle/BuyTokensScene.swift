@@ -345,8 +345,8 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     }
     
     func createBuyFiveBtn() {
-        buyFiveBtn = SKSpriteNode(imageNamed: "play")
-        buyFiveBtn.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))
+        buyFiveBtn = SKSpriteNode(imageNamed: "buy-coins-20")
+        buyFiveBtn.size = CGSize(width: (0.242 * self.frame.width), height: 1.5 * (0.242 * self.frame.width))
         buyFiveBtn.position = CGPoint(x: self.frame.midX / 2, y: self.frame.height * 0.75)
         buyFiveBtn.zPosition = 8
         buyFiveBtn.name = "buyFiveButton"
@@ -354,8 +354,8 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     }
     
     func createBuyThirtyBtn() {
-        buyThirtyBtn = SKSpriteNode(imageNamed: "play")
-        buyThirtyBtn.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))
+        buyThirtyBtn = SKSpriteNode(imageNamed: "buy-coins-110")
+        buyThirtyBtn.size = CGSize(width: (0.242 * self.frame.width), height: 1.5 * (0.242 * self.frame.width))
         buyThirtyBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.75)
         buyThirtyBtn.zPosition = 8
         buyThirtyBtn.name = "buyThirtyButton"
@@ -363,8 +363,8 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     }
     
     func createBuySeventyFiveBtn() {
-        buySeventyFiveBtn = SKSpriteNode(imageNamed: "play")
-        buySeventyFiveBtn.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))
+        buySeventyFiveBtn = SKSpriteNode(imageNamed: "buy-coins-300")
+        buySeventyFiveBtn.size = CGSize(width: (0.242 * self.frame.width), height: 1.5 * (0.242 * self.frame.width))
         buySeventyFiveBtn.position = CGPoint(x: self.frame.midX / 2, y: self.frame.midY)
         buySeventyFiveBtn.zPosition = 8
         buySeventyFiveBtn.name = "buySeventyFiveButton"
@@ -372,8 +372,8 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     }
     
     func createBuyTwoHundredBtn() {
-        buyTwoHundredBtn = SKSpriteNode(imageNamed: "play")
-        buyTwoHundredBtn.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))
+        buyTwoHundredBtn = SKSpriteNode(imageNamed: "buy-coins-1000")
+        buyTwoHundredBtn.size = CGSize(width: (0.242 * self.frame.width), height: 1.5 * (0.242 * self.frame.width))
         buyTwoHundredBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.midY)
         buyTwoHundredBtn.zPosition = 8
         buyTwoHundredBtn.name = "buyTwoHundredButton"
