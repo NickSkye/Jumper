@@ -52,13 +52,25 @@ extension GameScene{
         self.addChild(restartBtn)
         print("restartbuttoncreated")
         
-        adBtn = SKSpriteNode(imageNamed: "double-coins")
-        adBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
-        adBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height / 2)
-        adBtn.zPosition = 6
-        adBtn.setScale(0)
-        self.addChild(adBtn)
-        print("adbuttoncreated")
+        if tokens > 0 {
+            adBtn = SKSpriteNode(imageNamed: "double-coins")
+            adBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
+            adBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height / 2)
+            adBtn.zPosition = 6
+            adBtn.setScale(0)
+            self.addChild(adBtn)
+            print("adbuttoncreated")
+            adBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        } else {
+            adBtn = SKSpriteNode(imageNamed: "free-coins-simple")
+            adBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
+            adBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height / 2)
+            adBtn.zPosition = 6
+            adBtn.setScale(0)
+            self.addChild(adBtn)
+            print("adbuttoncreated")
+            adBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        }
         
         /*
         secondChanceBtn = SKSpriteNode(imageNamed: "play")
@@ -79,7 +91,7 @@ extension GameScene{
         addChild(statLbl)
         */
        // secondChanceBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
-        adBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        
         restartBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
     }
     
@@ -429,17 +441,17 @@ extension GameScene{
         water.position = CGPoint(x: self.size.width/2.0, y: 0)
         water.alpha = 0.5
        // self.addChild(water)
-        
+        water.name = "waternode"
         
         waterObstacle = SKNode()
         waterObstacle.name = "water"
         waterObstacle.zPosition = 10
         let randomWater = Int(random(min: 0, max: 2))
-        if randomWater == 1 && score > 5{
+        if birdType == "dicky"{
             waterObstacle.addChild(water)
             self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
             print("WATER OBSTACLE CREATED RANDOM")
-            
+            waterPresent = true
         }
         //waterObstacle.addChild(water)
         print("WATER OBSTACLE CREATED")

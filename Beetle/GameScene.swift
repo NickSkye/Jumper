@@ -16,10 +16,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let pop = SKAction.playSoundFileNamed("bubblepop.mp3", waitForCompletion: false)
     
     
-    let VISCOSITY: CGFloat = 6 //Increase to make the water "thicker/stickier," creating more friction.
-    let BUOYANCY: CGFloat = 0.4 //Slightly increase to make the object "float up faster," more buoyant.
-    let OFFSET: CGFloat = 70
+    let VISCOSITY: CGFloat = 8 //Increase to make the water "thicker/stickier," creating more friction.
+    let BUOYANCY: CGFloat = 0.8 //Slightly increase to make the object "float up faster," more buoyant.
+    let OFFSET: CGFloat = 400
     var water = SKSpriteNode()
+    var waterPresent = false
     var hardTouch = false
     var force = CGFloat()
     var score = Int(0)
@@ -51,6 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var waterObstacle = SKNode()
     var moveAndRemove = SKAction()
     var moveAndRemoveWater = SKAction()
+    var moveWaterBack = SKAction()
     var moveWater = SKAction()
     var moveAndRemoveBigBird = SKAction()
    var movePipes = SKAction()
@@ -112,7 +114,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-    
+    func getTokens() -> Int {
+        return tokens
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        
@@ -246,7 +250,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //run and spawn water
                 
                 
-                waterdelay = SKAction.wait(forDuration: 10.0)
+                waterdelay = SKAction.wait(forDuration: 20.0)
                 spawnDelayWater = SKAction.sequence([spawnWater, waterdelay])
                 
                 spawnDelayWaterForever = SKAction.repeatForever(spawnDelayWater)
@@ -273,7 +277,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var waterWaitdelay = SKAction.wait(forDuration: 10.0)
                 moveWater = SKAction.moveTo(y: self.frame.midY / 2, duration: 3.0)
                 let removeWater = SKAction.removeFromParent()
-                moveAndRemoveWater = SKAction.sequence([moveWater, waterWaitdelay, removeWater])
+                moveWaterBack = SKAction.moveTo(y: -(self.frame.midY / 2), duration: 1.0)
+                moveAndRemoveWater = SKAction.sequence([moveWater, waterWaitdelay, moveWaterBack, removeWater])
                 
                 
                 
@@ -341,6 +346,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     else if randomBirdMove == 1 {
                         moveBigBird = SKAction.moveBy(x: -(self.frame.width * 2), y: -250, duration: TimeInterval(time))
                     }
+                    
+                    
+                    //move water
+                    //moves water
+                    var waterWaitdelay = SKAction.wait(forDuration: 10.0)
+                    moveWater = SKAction.moveTo(y: self.frame.midY / 2, duration: 3.0)
+                    moveWaterBack = SKAction.moveTo(y: -(self.frame.midY / 2), duration: 1.0)
+                    let removeWater = SKAction.removeFromParent()
+                    
+                    moveAndRemoveWater = SKAction.sequence([moveWater, waterWaitdelay, moveWaterBack, removeWater])
                     
                     let pauser = SKAction.wait(forDuration: 1)
                     
@@ -427,9 +442,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.isPaused = true
                     // MusicHelper.sharedHelper.stopBackgroundMusic()
                     pauseBtn.texture = SKTexture(imageNamed: "play")
+                   // pauseBtn.run(SKAction .move(to: CGPoint(x: (0.484 * self.frame.width), y: (0.136 * self.frame.height)) , duration: 0.1))
                     ////////////
                     pauseRestart = SKSpriteNode(imageNamed: "restart")
-                    pauseRestart.size = CGSize(width:60, height:40)
+                    pauseRestart.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))
                     pauseRestart.position = CGPoint(x: self.frame.midX / 2, y: self.frame.midY)
                     pauseRestart.zPosition = 9
                     pauseRestart.name = "pauseRestart"
@@ -451,7 +467,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     pauseRestart.removeAllActions()
                     self.isPaused = false
                     
-                    //  MusicHelper.sharedHelper.playBackgroundMusic()
+                    //  MusicHelper.sharedHelper.playBackgroundMusic()//
                     pauseBtn.texture = SKTexture(imageNamed: "pause")
                     
                 }
@@ -919,6 +935,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     bgImg = "backgroundTwo"
                 } */
                 
+                //water
+                if (waterObstacle.childNode(withName: "waternode") != nil) {
+                    print("69")
+                    
+                    if bird.frame.midY < water.frame.height {   //contains(CGPoint(x:bird.position.x, y:bird.position.y-bird.size.height/2.0)) {
+                    print("70")
+                    let rate: CGFloat = 0.01; //Controls rate of applied motion. You shouldn't really need to touch this.
+                    let disp = (((water.position.y+OFFSET)+water.size.height/2.0)-((bird.position.y)-bird.size.height/2.0)) * BUOYANCY
+                    let targetPos = CGPoint(x: bird.position.x, y: bird.position.y+disp)
+                    let targetVel = CGPoint(x: (targetPos.x-bird.position.x)/(1.0/60.0), y: (targetPos.y-bird.position.y)/(1.0/60.0))
+                    let relVel: CGVector = CGVector(dx:targetVel.x-bird.physicsBody!.velocity.dx*VISCOSITY, dy:targetVel.y-bird.physicsBody!.velocity.dy*VISCOSITY);
+                    bird.physicsBody?.velocity=CGVector(dx:(bird.physicsBody?.velocity.dx)!+relVel.dx*rate, dy:(bird.physicsBody?.velocity.dy)!+relVel.dy*rate);
+                }
+                }
+                //water end
                 if bird.position.x <= 10 {
                     if invincible {
                         bird.run(SKAction .moveTo(x: self.frame.width * 0.3 , duration: 0.05))
@@ -956,7 +987,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 } else {
                     if isTouching {
-                        bird.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (0.003397 * self.frame.height)))
+                        if (waterObstacle.childNode(withName: "waternode") != nil) {
+                            bird.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: -(0.01992 * self.frame.height)))
+                        }
+                        else {
+                            bird.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (0.003397 * self.frame.height)))
+                        }
                         /*
                         if hardTouch == true {
                             bird.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (0.009397 * self.frame.height)))

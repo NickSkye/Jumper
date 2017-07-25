@@ -7,15 +7,16 @@ class GameViewController: UIViewController, VungleSDKDelegate {
 
     
    let notificationName = Notification.Name("NotificationIdentifier")
+   var sdk = VungleSDK.shared()
     
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             print("ISAVAIL")
         }
-        
+        //sdk = VungleSDK.shared()
+        sdk?.delegate = self;
         // Register to receive notification
         NotificationCenter.default.addObserver(self, selector: #selector(self.playVungleAd), name: notificationName, object: nil)
         let scene = GameScene(size: view.bounds.size)
@@ -24,6 +25,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
         skView.showsNodeCount = false
         skView.ignoresSiblingOrder = false
         scene.scaleMode = .resizeFill
+        
         skView.presentScene(scene, transition: SKTransition.doorway(withDuration: 3))
  
         /*
@@ -57,9 +59,9 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     func playVungleAd() {
         do {
             
-        var sdk = VungleSDK.shared()
+        
         try sdk?.playAd(self, withOptions: nil)
-            
+        
             
         } catch {
             print("ERROR")
@@ -69,7 +71,17 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     }
     
     func vungleSDKWillCloseAd(withViewInfo viewInfo: [AnyHashable : Any]!) {
-        print("__________vungleSDKWillCloseAd")
+       // var completed = viewInfo
+        print(viewInfo)
+        print(GameScene().getTokens()) // change this to determine whether tokens were got
+        /*
+        if completed as! Int == 1{
+            print("GOOD")
+        }
+        else {
+            print("BAD")
+        }
+        */
     }
     func vungleSDKwillShowAd() {
         print("__________vungleSDKwillShowAd")
