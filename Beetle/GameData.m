@@ -107,7 +107,7 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     
     //Updates iCloud
     if([NSUbiquitousKeyValueStore defaultStore]) {
-        //Calls updateiClound function
+        //Calls updateiCloud function
         [self updateiCloud];
     }
     
@@ -122,7 +122,7 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     [encoder encodeDouble:self.totalCoins forKey:SSGameDataTotalCoinsKey];
     [encoder encodeDouble:self.numTimesPlayed forKey: SSGameDataNumTimesPlayedKey];
     [encoder encodeDouble:self.coinsSpent forKey:SSGameDataTotalCoinsSpentKey];
-    [encoder encodeDouble:self.coins forKey: SSGameDataCoins];
+    [encoder encodeDouble:self.currCoins forKey: SSGameDataCoins];
 }
 
 //Decoder
@@ -136,7 +136,7 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
         _totalCoins = [aDecoder decodeDoubleForKey:SSGameDataTotalCoinsKey];
         _numTimesPlayed = [aDecoder decodeDoubleForKey:SSGameDataNumTimesPlayedKey];
         _totalCoinsSpent = [aDecoder decodeDoubleForKey:SSGameDataTotalCoinsSpentKey];
-        _coins = [aDecoder decodeDoubleForKey: SSGameDataCoins];
+        _currCoins = [aDecoder decodeDoubleForKey: SSGameDataCoins];
     }
     
     return self;
@@ -198,11 +198,13 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     
     //If current amount of coins is different from iCloud, then update it
     if (self.currCoins != cloudCoins){
-        [iCloudStore setDouble:self.coins forKey:SSGameDataCoins];
+        [iCloudStore setDouble:self.currCoins forKey:SSGameDataCoins];
         
         //Call synchonize function
         [iCloudStore synchronize];
     }
+    
+    //[iCloudStore synchronize];
 }
 
 //NOT COMPLETE YET
@@ -245,7 +247,9 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     //Store number of coins
     self.currCoins = cloudCoins;
     
-    //Sends notifcation that the gamedata has been updated from iCloud
+    [self save];
+    
+    //Sends notification that the gamedata has been updated from iCloud
     [[NSNotificationCenter defaultCenter] postNotificationName: SSGameDataUpdatedFromiCloud object:nil];
 }
 
@@ -257,12 +261,6 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:SSGameDataUpdatedFromiCloud object:nil];
 }
 
-
-//Not complete yet
-- (void)didUpdateGameData:(NSNotification*)n
-{
-    
-}
 
 //Function: reset
 //Returns: nothing

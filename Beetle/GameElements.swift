@@ -110,12 +110,14 @@ extension GameScene{
     func createShopBtn() {
         //shows number of spendable coins in shop. NEED TO REMOVE COINS AND UPDATE USERDEFAULTS WHEN TOKENS SPENT
         var tokensshop = Int(0)
-        if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+        /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
             tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
         } else {
             tokensshop = 0
-        }
-        let tokenshopLbl = SKLabelNode()
+        }*/
+        
+        tokensshop = GameData.shared().currCoins
+        
         tokenshopLbl.position = CGPoint(x: 0 , y: -(0.041 * self.frame.height))
         tokenshopLbl.text = "\(tokensshop) Coins"
         tokenshopLbl.zPosition = 5
@@ -210,11 +212,15 @@ extension GameScene{
     func createHighscoreLabel() -> SKLabelNode {
         let highscoreLbl = SKLabelNode()
         highscoreLbl.position = CGPoint(x: (self.frame.width - (0.193 * self.frame.width)), y: (self.frame.height - (0.03 * self.frame.height)))
-        if let highestScore = UserDefaults.standard.object(forKey: "highestScore"){
+        /*if let highestScore = UserDefaults.standard.object(forKey: "highestScore"){
             highscoreLbl.text = "Highest Score: \(highestScore)"
         } else {
             highscoreLbl.text = "Highest Score: 0"
-        }
+        }*/
+        
+        highscoreLbl.text = "Highest Score: " + String(GameData.shared().highScore)
+        print(GameData.shared().highScore)
+        
         highscoreLbl.zPosition = 5
         highscoreLbl.fontSize = 15
         highscoreLbl.fontName = "Helvetica-Bold"
@@ -224,10 +230,9 @@ extension GameScene{
     //Updates UI based on values from iCloud
     func updateUI(){
         //Updates highscoreLbl with GameData highscore
-        highscoreLbl.text = String(GameData.shared().highScore)
+        highscoreLbl.text = "Highest Score: " + String(GameData.shared().highScore)
         
-        //Updates tokenLbl with GameData coins
-        tokenLbl.text = String(GameData.shared().coins)
+        tokenshopLbl.text = "\(GameData.shared().currCoins) Coins"
     }
     
     func createLogo() {
