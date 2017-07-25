@@ -114,7 +114,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-    
+    func getTokens() -> Int {
+        return tokens
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        

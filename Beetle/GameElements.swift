@@ -52,13 +52,25 @@ extension GameScene{
         self.addChild(restartBtn)
         print("restartbuttoncreated")
         
-        adBtn = SKSpriteNode(imageNamed: "double-coins")
-        adBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
-        adBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height / 2)
-        adBtn.zPosition = 6
-        adBtn.setScale(0)
-        self.addChild(adBtn)
-        print("adbuttoncreated")
+        if tokens > 0 {
+            adBtn = SKSpriteNode(imageNamed: "double-coins")
+            adBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
+            adBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height / 2)
+            adBtn.zPosition = 6
+            adBtn.setScale(0)
+            self.addChild(adBtn)
+            print("adbuttoncreated")
+            adBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        } else {
+            adBtn = SKSpriteNode(imageNamed: "free-coins-simple")
+            adBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
+            adBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height / 2)
+            adBtn.zPosition = 6
+            adBtn.setScale(0)
+            self.addChild(adBtn)
+            print("adbuttoncreated")
+            adBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        }
         
         /*
         secondChanceBtn = SKSpriteNode(imageNamed: "play")
@@ -79,7 +91,7 @@ extension GameScene{
         addChild(statLbl)
         */
        // secondChanceBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
-        adBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
+        
         restartBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
     }
     
