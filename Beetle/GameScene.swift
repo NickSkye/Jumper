@@ -1057,10 +1057,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      collected
      */
     func processTokens(){
-        
+        //Set current tokens
         let cTokens = gameData.coins
+        
+        //Sets total tokens locally
         let tTokens = gameData.totalCoins + Int(cTokens)
         
+        //Add total tokens to Game Data
         gameData.totalCoins = Int(tTokens)
     }
 }
