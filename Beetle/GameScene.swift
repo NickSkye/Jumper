@@ -92,6 +92,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         createScene()
         
+        //----------------------------NOTIFICATION BEGIN----------------------------------------
+        //Runs updateGameData function when there is an iCloud notification
+        NotificationCenter.default.addObserver(self, selector: #selector(updateGameData) , name: cloudNotification, object: nil)
+        
+        //Post notification
+        NotificationCenter.default.post(name: cloudNotification, object:nil)
+        
+        //Stop listening notification
+        NotificationCenter.default.removeObserver(self, name: cloudNotification, object: nil)
+        //----------------------------NOTIFICATION END----------------------------------------
+        
         if UserDefaults.standard.object(forKey: "highestScore") != nil {
             print("ERROR1")
             let hscore = UserDefaults.standard.integer(forKey: "highestScore")
@@ -1101,6 +1112,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //Add total tokens to Game Data
         gameData.totalCoins = Int(tTokens)
+    }
+    
+    /*
+     updateGameData:
+     Does not return a value. Meant to run to check for an iCloud notification and update GameData if the current GameData is not update to date
+     
+        Uses NSNotification to retrieve notification
+     */
+    func updateGameData(notification:NSNotification){
+        print("Here iCloud")
     }
 }
 
