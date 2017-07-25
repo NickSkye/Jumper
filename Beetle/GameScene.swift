@@ -34,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var statLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
     var taptoplayLbl = SKLabelNode()
+    var tokenshopLbl = SKLabelNode()
     var restartBtn = SKSpriteNode()
     var adBtn = SKSpriteNode()
     var secondChanceBtn = SKSpriteNode()
@@ -92,7 +93,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         createScene()
         
-        if UserDefaults.standard.object(forKey: "highestScore") != nil {
+        //----------------------------NOTIFICATION BEGIN----------------------------------------
+        //Runs updateGameData function when there is an iCloud notification
+        NotificationCenter.default.addObserver(self, selector: #selector(updateGameData) , name: cloudNotification, object: nil)
+        
+        //Post notification
+        NotificationCenter.default.post(name: cloudNotification, object:nil)
+        
+        //Stop listening notification
+        //NotificationCenter.default.removeObserver(self, name: cloudNotification, object: nil)
+        //----------------------------NOTIFICATION END----------------------------------------
+        
+        /*if UserDefaults.standard.object(forKey: "highestScore") != nil {
             print("ERROR1")
             let hscore = UserDefaults.standard.integer(forKey: "highestScore")
             if hscore < Int(scoreLbl.text!)!{
@@ -110,7 +122,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         } else {
             UserDefaults.standard.set(0, forKey: "currentTokens")
-        }
+        }*/
+        
+        //Calls processScore() function
+        processScore()
+        
+        //Calls processTokens() function
+        processTokens()
 
     }
     
@@ -371,7 +389,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if died == true{
                 if restartBtn.contains(location){
-                    //for score
+                    /*//for score
                     if UserDefaults.standard.object(forKey: "highestScore") != nil {
                         print("ERROR1")
                         let hscore = UserDefaults.standard.integer(forKey: "highestScore")
@@ -390,8 +408,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
                     } else {
                         UserDefaults.standard.set(0, forKey: "currentTokens")
-                    }
-
+                    }*/
+                    
+                    //Calls processScore() function
+                    processScore()
+                    
+                    //Calls processTokens() function
+                    processTokens()
+                    endGameProcess()
+                    
                     
                     restartScene()
                 }
@@ -402,7 +427,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
                     
                     
-                    
+                    /*
                     if UserDefaults.standard.object(forKey: "highestScore") != nil {
                         print("ERROR1")
                         let hscore = UserDefaults.standard.integer(forKey: "highestScore")
@@ -421,7 +446,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         
                     } else {
                         UserDefaults.standard.set(0, forKey: "currentTokens")
-                    }
+                    }*/
+                    
+                    //Calls processScore() function
+                    processScore()
+                    
+                    //Calls processTokens() function
+                    processTokens()
+                    
+                    endGameProcess()
                     
                     
                     restartScene()
@@ -478,7 +511,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 pauseRestart.removeFromParent()
                 self.isPaused = false
                 pauseRestart.isHidden = true
-                if UserDefaults.standard.object(forKey: "highestScore") != nil {
+                /*if UserDefaults.standard.object(forKey: "highestScore") != nil {
                     let hscore = UserDefaults.standard.integer(forKey: "highestScore")
                     if hscore < Int(scoreLbl.text!)!{
                         UserDefaults.standard.set(scoreLbl.text, forKey: "highestScore")
@@ -495,8 +528,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 } else {
                     UserDefaults.standard.set(0, forKey: "currentTokens")
-                }
+                }*/
+                
+                //Calls processScore() function
+                processScore()
+                
+                //Calls processTokens() function
+                processTokens()
 
+                endGameProcess()
                 
                 restartScene()
                 
@@ -534,6 +574,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameStarted = false
         score = 0
         tokens = 0
+        
         createScene()
     }
     
@@ -675,8 +716,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         taptoplayLbl = createTaptoplayLabel()
         self.addChild(taptoplayLbl)
-        
-        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -718,6 +757,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }))
             if died == false{
                 run(scream)
+                endGameProcess()
                 died = true
                 createRestartBtn()
                 pauseBtn.removeFromParent()
@@ -848,6 +888,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }))
             if died == false{
                 run(scream)
+                endGameProcess()
                 died = true
                 createRestartBtn()
                 pauseBtn.removeFromParent()
@@ -867,6 +908,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }))
             if died == false{
                 run(scream)
+                endGameProcess()
                 died = true
                 createRestartBtn()
                 pauseBtn.removeFromParent()
@@ -888,6 +930,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }))
             if died == false{
                 run(chomp)
+                endGameProcess()
                 died = true
                 createRestartBtn()
                 pauseBtn.removeFromParent()
@@ -908,7 +951,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }))
             if died == false{
                 run(chomp)
-                
+                endGameProcess()
                 died = true
                 createRestartBtn()
                 pauseBtn.removeFromParent()
@@ -967,6 +1010,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }))
                     if died == false{
                         run(scream)
+                        endGameProcess()
                         died = true
                         createRestartBtn()
                         pauseBtn.removeFromParent()
@@ -1074,16 +1118,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      Does not return a value. Meant to be run while the game is being played and the score change
      */
     func processScore(){
-        //Set hScore as the value that stores the users highest score
-        let hScore = gameData.highScore
+        //Set hScore as the value that stores the users highest score from iCloud
+        let hScore = GameData.shared().highScore
+        
+        print("High Score + \(hScore)")
         
         //Check if the users high score is greater than the score they currently have in-game
         //If high score is less than current score then reset the high score to match the current score.
-        if hScore < Int(scoreLbl.text!)!{
-            
+        if hScore < score {
             //Set current in-game score to a variable to be used for setting the high score
-            let cScore = Int(scoreLbl.text!)
-            gameData.highScore = cScore!
+            let cScore = score
+            GameData.shared().highScore = cScore
         }
     }
     
@@ -1093,11 +1138,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      collected
      */
     func processTokens(){
+        //Get total coins earned ever
+        let tTokens = GameData.shared().totalCoins
         
-        let cTokens = gameData.coins
-        let tTokens = gameData.totalCoins + Int(cTokens)
+        //Sets total tokens locally
+        let cTokens = GameData.shared().currCoins + tokens
         
-        gameData.totalCoins = Int(tTokens)
+        //Add current tokens to Game Data
+        GameData.shared().currCoins = cTokens
+        
+        //Add total tokens to Game Data
+        GameData.shared().totalCoins = tTokens + tokens
+    }
+    
+    /*
+     updateGameData:
+     Does not return a value. Meant to run to check for an iCloud notification and update GameData if the current GameData is not update to date
+     
+        Uses NSNotification to retrieve notification
+     */
+    func updateGameData(notification:NSNotification){
+        //Calls updateUI() from GameElememts.swift
+        //Updates UI with values from iCloud
+        print("Here")
+        print(GameData.shared().highScore)
+        print(GameData.shared().currCoins)
+        updateUI()
+    }
+    
+    /*
+     endGameProcess:
+     Does not return a value. These are functions that need to run when the game is over
+     */
+    func endGameProcess(){
+        GameData.shared().save()
+        GameData.shared().reset()
+        
+        updateUI()
     }
 }
 
