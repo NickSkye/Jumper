@@ -440,6 +440,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.isPaused = true
                     // MusicHelper.sharedHelper.stopBackgroundMusic()
                     pauseBtn.texture = SKTexture(imageNamed: "play")
+                   // pauseBtn.run(SKAction .move(to: CGPoint(x: (0.484 * self.frame.width), y: (0.136 * self.frame.height)) , duration: 0.1))
                     ////////////
                     pauseRestart = SKSpriteNode(imageNamed: "restart")
                     pauseRestart.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))

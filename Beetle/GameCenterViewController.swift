@@ -44,7 +44,7 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
         skView.presentScene(scene, transition: SKTransition.doorway(withDuration: 3))
  */
     }
-    /*
+    /*d
     func getScore() {
         if (GKLocalPlayer.localPlayer().isAuthenticated) {
             GKLeaderboard.loadLeaderboards { objects, error in
