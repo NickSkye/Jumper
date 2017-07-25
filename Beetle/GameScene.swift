@@ -100,8 +100,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Post notification
         NotificationCenter.default.post(name: cloudNotification, object:nil)
         
-        
-        
         //Stop listening notification
         //NotificationCenter.default.removeObserver(self, name: cloudNotification, object: nil)
         //----------------------------NOTIFICATION END----------------------------------------
@@ -417,7 +415,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     //Calls processTokens() function
                     processTokens()
-                    
+                    endGameProcess()
                     
                     
                     restartScene()
@@ -455,6 +453,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     //Calls processTokens() function
                     processTokens()
+                    
+                    endGameProcess()
                     
                     
                     restartScene()
@@ -536,6 +536,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //Calls processTokens() function
                 processTokens()
 
+                endGameProcess()
                 
                 restartScene()
                 

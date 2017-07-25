@@ -164,7 +164,7 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     long cloudTotalCoins = [iCloudStore doubleForKey: SSGameDataTotalCoinsKey];
     
     //If local total coins is different from iCloud, update it
-    if (self.totalCoins != cloudTotalCoins){
+    if (self.totalCoins > cloudTotalCoins){
         [iCloudStore setDouble:self.totalCoins forKey:SSGameDataTotalCoinsKey];
         
         //Call synchronize function
@@ -203,8 +203,6 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
         //Call synchonize function
         [iCloudStore synchronize];
     }
-    
-    //[iCloudStore synchronize];
 }
 
 //NOT COMPLETE YET
@@ -236,7 +234,7 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     self.highScore = MAX(cloudHighScore, self.highScore);
     
     //Store total coins
-    self.totalCoins = cloudTotalCoins;
+    self.totalCoins = MAX(cloudTotalCoins, self.totalCoins);
     
     //Store total coins spent
     self.totalCoinsSpent = cloudTotalCoinsSpent;
