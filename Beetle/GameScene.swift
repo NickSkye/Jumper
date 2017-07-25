@@ -823,8 +823,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.score += 2
             self.scoreLbl.text = "\(self.score)"
             //bird.physicsBody?.velocity = CGVector(dx: 70, dy: 0)
-            bird.run(SKAction .moveTo(x: self.frame.width * 0.74 , duration: 0.05))
-            
+            //bird.run(SKAction .moveTo(x: self.frame.width * 0.74 , duration: 0.05))
+            if bird.position.x < (self.frame.midX / 2) {
+                bird.run(SKAction .moveTo(x: (self.frame.midX / 2) , duration: 0.05))
+            }
             
             secondBody.node?.removeFromParent()
             
@@ -839,7 +841,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             feedback.impactOccurred()
             self.score += 2
             self.scoreLbl.text = "\(self.score)"
-             bird.run(SKAction .moveTo(x: self.frame.width * 0.74 , duration: 0.05))
+             //bird.run(SKAction .moveTo(x: self.frame.width * 0.74 , duration: 0.05))
+            if bird.position.x < (self.frame.midX / 2) {
+                bird.run(SKAction .moveTo(x: (self.frame.midX / 2) , duration: 0.05))
+            }
             firstBody.node?.removeFromParent()
         }
         else if firstBody.categoryBitMask == CollisionBitMask.birdCategory && secondBody.categoryBitMask == CollisionBitMask.scoreCategory {

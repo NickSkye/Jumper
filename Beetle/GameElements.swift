@@ -316,7 +316,7 @@ extension GameScene{
         let killerPillarNode = SKSpriteNode(imageNamed: "laserbeam")
         killerPillarNode.size = CGSize(width: (0.097 * self.frame.width), height: self.frame.height)
         killerPillarNode.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: self.frame.height / 2)
-        killerPillarNode.physicsBody = SKPhysicsBody(rectangleOf: killerPillarNode.size)
+        killerPillarNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: killerPillarNode.size.height)) //rectangleOf: killerPillarNode.size)
         killerPillarNode.physicsBody?.affectedByGravity = false
         killerPillarNode.physicsBody?.isDynamic = false
         killerPillarNode.setScale(1)
@@ -330,7 +330,7 @@ extension GameScene{
         let killerPillarTopNode = SKSpriteNode(imageNamed: "laserbeam")
         killerPillarTopNode.size = CGSize(width: (0.097 * self.frame.width), height: self.frame.height)
         killerPillarTopNode.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: self.frame.height / 2)
-        killerPillarTopNode.physicsBody = SKPhysicsBody(rectangleOf: killerPillarTopNode.size)
+        killerPillarTopNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: killerPillarTopNode.size.height)) //rectangleOf: killerPillarTopNode.size)
         killerPillarTopNode.physicsBody?.affectedByGravity = false
         killerPillarTopNode.physicsBody?.isDynamic = false
         killerPillarTopNode.setScale(1)
