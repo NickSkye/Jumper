@@ -348,8 +348,13 @@ extension GameScene{
         
         let topWall = SKSpriteNode(imageNamed: "crane")
         let btmWall = SKSpriteNode(imageNamed: "pillar")
+        //size for 6+ and 7+ height = 736
+        var randomWidth = random(min: 380, max: 440)
+        //size for 6 and 7
+        if self.frame.height <= 667 {
+            randomWidth = random(min: 550, max: 610)
+        }
         
-        let randomWidth = random(min: 380, max: 440) //(min: (0.516 * self.frame.height), max: (0.598 * self.frame.height))
         
         topWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) + randomWidth)
         btmWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) - randomWidth)
@@ -405,7 +410,7 @@ extension GameScene{
         wallPair.zPosition = 1
         
         let randomPosition = random(min: -(0.285 * self.frame.height), max: (0.285 * self.frame.height))
-        wallPair.position.y = wallPair.position.y +  randomPosition
+        wallPair.position.y = wallPair.position.y + randomPosition
         
         //make random here
         //TOKEN
