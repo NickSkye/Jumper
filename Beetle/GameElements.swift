@@ -162,6 +162,11 @@ extension GameScene{
         let scoreLbl = SKLabelNode()
         scoreLbl.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 + self.frame.height / 2.6)
         scoreLbl.text = "\(score)"
+        /*
+        if score > 10 {
+            //GameData.shared().highScore {
+            scoreLbl.fontColor = UIColor(red: 99/255 , green: 255/255 , blue: 32/255, alpha: 1.0)
+        } */
         scoreLbl.zPosition = 5
         scoreLbl.fontSize = 50
         scoreLbl.fontName = "HelveticaNeue-Bold"
@@ -196,14 +201,16 @@ extension GameScene{
         tokenLbl.text = "\(tokens)"
         tokenLbl.zPosition = 5
         tokenLbl.fontSize = 20
+        //tokenLbl.fontColor = UIColor(red: 238/255, green: 221/255, blue: 130/255, alpha: 1)
         tokenLbl.fontName = "HelveticaNeue-Bold"
         
         let tokenBg = SKShapeNode()
         tokenBg.position = CGPoint(x: 0, y: 0)
         tokenBg.path = CGPath(roundedRect: CGRect(x: CGFloat(-25), y: CGFloat(-15), width: CGFloat(50), height: CGFloat(50)), cornerWidth: 25, cornerHeight: 25, transform: nil)
-        let tokenBgColor = UIColor(red: CGFloat(0.0 / 255.0), green: CGFloat(0.0 / 255.0), blue: CGFloat(0.0 / 255.0), alpha: CGFloat(0.2))
-        tokenBg.strokeColor = UIColor.clear
+        let tokenBgColor = UIColor(red: CGFloat(255 / 255.0), green: CGFloat(215 / 255.0), blue: CGFloat(0 / 255.0), alpha: CGFloat(0.9))
+        tokenBg.strokeColor = UIColor(red: CGFloat(205 / 255.0), green: CGFloat(155 / 255.0), blue: CGFloat(29 / 255.0), alpha: CGFloat(1.0))
         tokenBg.fillColor = tokenBgColor
+        //tokenBg.fillTexture = SKTexture(image: UIImage(named: "flower")!)
         tokenBg.zPosition = -1
         tokenLbl.addChild(tokenBg)
         return tokenLbl

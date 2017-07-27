@@ -174,15 +174,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gcBtn.removeFromParent()
             }
         
-        }        //
+        }
         
         
-        ////////////////////////////////WAS HERE
-        
-        
-        /// was here V
-        ///moved touches here
-        
+            
         for touch in touches{
             
             let location = touch.location(in: self)
@@ -554,6 +549,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } */
             
             
+            
         }
         
         ////
@@ -574,7 +570,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameStarted = false
         score = 0
         tokens = 0
-        
+        if UserDefaults.standard.object(forKey: "numberOfGamesPlayed") != nil {
+            print("plus 1 game")
+            var gamesplayed = UserDefaults.standard.integer(forKey: "numberOfGamesPlayed")
+            gamesplayed += 1
+            UserDefaults.standard.set("\(gamesplayed)", forKey: "numberOfGamesPlayed")
+            if gamesplayed % 5 == 0 {
+                print("every fifth game ad played")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
+            }
+            
+        } else {
+            UserDefaults.standard.set(1, forKey: "numberOfGamesPlayed")
+        }
         createScene()
     }
     
