@@ -125,11 +125,13 @@ class NewSkinScene: SKScene {
             if !(characters.contains("ducky")) {
                 
                 var tokensshop = Int(0)
-                if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+                /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
                     tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
                 } else {
                     tokensshop = 0
-                }
+                }*/
+                
+                tokensshop = GameData.shared().currCoins
                 
                 if tokensshop < 5 {
                     var alert = UIAlertView(title: "Not Enough Coins", message: "You need 5 coins to buy Flippy's friend", delegate: nil, cancelButtonTitle: "OK")
@@ -142,18 +144,20 @@ class NewSkinScene: SKScene {
                         //run your function here
                         print("BOUGHT")
                         tokensshop -= 5
-                        UserDefaults.standard.set(tokensshop, forKey: "currentTokens")
+                        
+                        //Set GameData.currCoins to value of tokensshop after purchase
+                        GameData.shared().currCoins = tokensshop
+                        
+                        GameData.shared().save()
+                        
                         self.characters.append("ducky")
                         UserDefaults.standard.set(self.characters, forKey: "characters")
-                        self.tokenshopLbl.text = "\(tokensshop)"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buySecondBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     //if alert answer == yes  {
-                    
-                    
-                    
                 }
                 
                 
@@ -186,11 +190,13 @@ class NewSkinScene: SKScene {
             if !(characters.contains("rainbowbird1")) {
                 
                 var tokensshop = Int(0)
-                if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+                /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
                     tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
                 } else {
                     tokensshop = 0
-                }
+                }*/
+                
+                tokensshop = GameData.shared().currCoins
                 
                 if tokensshop < 5 {
                     var alert = UIAlertView(title: "Not Enough Coins", message: "You need 5 coins to buy Flippy's friend", delegate: nil, cancelButtonTitle: "OK")
@@ -203,10 +209,13 @@ class NewSkinScene: SKScene {
                         //run your function here
                         print("BOUGHT")
                         tokensshop -= 5
-                        UserDefaults.standard.set(tokensshop, forKey: "currentTokens")
+                        
+                        GameData.shared().currCoins = tokensshop
+                        GameData.shared().save()
+                        
                         self.characters.append("rainbowbird1")
                         UserDefaults.standard.set(self.characters, forKey: "characters")
-                        self.tokenshopLbl.text = "\(tokensshop)"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buyThirdBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -246,11 +255,13 @@ class NewSkinScene: SKScene {
             if !(characters.contains("steveBird1")) {
                 
                 var tokensshop = Int(0)
-                if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+                /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
                     tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
                 } else {
                     tokensshop = 0
-                }
+                }*/
+                
+                tokensshop = GameData.shared().currCoins
                 
                 if tokensshop < 5  { //change to 200
                     var alert = UIAlertView(title: "Not Enough Coins", message: "You need 200 coins to buy Flippy's friend", delegate: nil, cancelButtonTitle: "OK")
@@ -263,10 +274,14 @@ class NewSkinScene: SKScene {
                         //run your function here
                         print("BOUGHT")
                         tokensshop -= 5
-                        UserDefaults.standard.set(tokensshop, forKey: "currentTokens")
+                        //UserDefaults.standard.set(tokensshop, forKey: "currentTokens")
+                        
+                        GameData.shared().currCoins = tokensshop
+                        GameData.shared().save()
+                        
                         self.characters.append("steveBird1")
                         UserDefaults.standard.set(self.characters, forKey: "characters")
-                        self.tokenshopLbl.text = "\(tokensshop)"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buyFourthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -305,11 +320,13 @@ class NewSkinScene: SKScene {
             if !(characters.contains("derpyBird1")) {
                 
                 var tokensshop = Int(0)
-                if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+                /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
                     tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
                 } else {
                     tokensshop = 0
-                }
+                }*/
+                
+                tokensshop = GameData.shared().currCoins
                 
                 if tokensshop < 5  { //change to 200
                     var alert = UIAlertView(title: "Not Enough Coins", message: "You need 5 coins to buy Flippy's friend", delegate: nil, cancelButtonTitle: "OK")
@@ -322,10 +339,11 @@ class NewSkinScene: SKScene {
                         //run your function here
                         print("BOUGHT")
                         tokensshop -= 5
-                        UserDefaults.standard.set(tokensshop, forKey: "currentTokens")
+                        GameData.shared().currCoins = tokensshop
+                        GameData.shared().save()
                         self.characters.append("derpyBird1")
                         UserDefaults.standard.set(self.characters, forKey: "characters")
-                        self.tokenshopLbl.text = "\(tokensshop)"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buyFifthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -362,11 +380,13 @@ class NewSkinScene: SKScene {
             if !(characters.contains("fatBird1")) {
                 
                 var tokensshop = Int(0)
-                if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+                /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
                     tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
                 } else {
                     tokensshop = 0
-                }
+                }*/
+                
+                tokensshop = GameData.shared().currCoins
                 
                 if tokensshop < 5  { //change to 200
                     var alert = UIAlertView(title: "Not Enough Coins", message: "You need 5 coins to buy Flippy's friend", delegate: nil, cancelButtonTitle: "OK")
@@ -379,10 +399,11 @@ class NewSkinScene: SKScene {
                         //run your function here
                         print("BOUGHT")
                         tokensshop -= 5
-                        UserDefaults.standard.set(tokensshop, forKey: "currentTokens")
+                        GameData.shared().currCoins = tokensshop
+                        GameData.shared().save()
                         self.characters.append("fatBird1")
                         UserDefaults.standard.set(self.characters, forKey: "characters")
-                        self.tokenshopLbl.text = "\(tokensshop)"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buySixthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -471,11 +492,13 @@ class NewSkinScene: SKScene {
     
     func createCoinsAmount() {
         var tokensshop = Int(0)
-        if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+        /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
             tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
         } else {
             tokensshop = 0
-        }
+        }*/
+        
+        tokensshop = GameData.shared().currCoins
         
         tokenshopLbl.position = CGPoint(x: self.frame.width - (0.121 * self.frame.width) , y: self.frame.height - (0.068 * self.frame.height))
         tokenshopLbl.text = "\(tokensshop)"
