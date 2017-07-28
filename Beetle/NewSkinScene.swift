@@ -147,6 +147,7 @@ class NewSkinScene: SKScene {
                         
                         //Set GameData.currCoins to value of tokensshop after purchase
                         GameData.shared().currCoins = tokensshop
+                        GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         
                         GameData.shared().save()
                         
@@ -211,6 +212,7 @@ class NewSkinScene: SKScene {
                         tokensshop -= 5
                         
                         GameData.shared().currCoins = tokensshop
+                        GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
                         
                         self.characters.append("rainbowbird1")
@@ -277,6 +279,7 @@ class NewSkinScene: SKScene {
                         //UserDefaults.standard.set(tokensshop, forKey: "currentTokens")
                         
                         GameData.shared().currCoins = tokensshop
+                        GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
                         
                         self.characters.append("steveBird1")
@@ -340,6 +343,7 @@ class NewSkinScene: SKScene {
                         print("BOUGHT")
                         tokensshop -= 5
                         GameData.shared().currCoins = tokensshop
+                        GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
                         self.characters.append("derpyBird1")
                         UserDefaults.standard.set(self.characters, forKey: "characters")
@@ -400,6 +404,7 @@ class NewSkinScene: SKScene {
                         print("BOUGHT")
                         tokensshop -= 5
                         GameData.shared().currCoins = tokensshop
+                        GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
                         self.characters.append("fatBird1")
                         UserDefaults.standard.set(self.characters, forKey: "characters")
