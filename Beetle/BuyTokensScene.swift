@@ -141,40 +141,46 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
                 case "com.flippysflight.purchasefive":
                     
                     //Here you should put the function you want to execute when the purchase is complete
-                    var currtokens = UserDefaults.standard.integer(forKey: "currentTokens")
-                    var totaltokens = Int(currtokens) + 20
-                    UserDefaults.standard.set("\(totaltokens)", forKey: "currentTokens")
-                    tokenshopLbl.text = "\(totaltokens)"
+                    var currtokens = GameData.shared().currCoins
+                    GameData.shared().currCoins = currtokens + 20
+                    GameData.shared().save()
+                    
+                    tokenshopLbl.text = "\(GameData.shared().currCoins)"
                     
                     var alert = UIAlertView(title: "Thank You", message: "You now have 20 more coins!", delegate: nil, cancelButtonTitle: "OK")
                     alert.show()
                 case "com.flippysflight.purchasethirty":
                     
                     //Here you should put the function you want to execute when the purchase is complete
-                    var currtokens = UserDefaults.standard.integer(forKey: "currentTokens")
-                    var totaltokens = Int(currtokens) + 110
-                    UserDefaults.standard.set("\(totaltokens)", forKey: "currentTokens")
-                    tokenshopLbl.text = "\(totaltokens)"
+                    var currtokens = GameData.shared().currCoins
+                    GameData.shared().currCoins = currtokens + 110
+                    GameData.shared().save()
+                    
+                    tokenshopLbl.text = "\(GameData.shared().currCoins)"
                     
                     var alert = UIAlertView(title: "Thank You", message: "You now have 110 more coins!", delegate: nil, cancelButtonTitle: "OK")
                     alert.show()
                 case "com.flippysflight.purchaseseventyfive":
                     
                     //Here you should put the function you want to execute when the purchase is complete
-                    var currtokens = UserDefaults.standard.integer(forKey: "currentTokens")
-                    var totaltokens = Int(currtokens) + 300
-                    UserDefaults.standard.set("\(totaltokens)", forKey: "currentTokens")
-                    tokenshopLbl.text = "\(totaltokens)"
+                    
+                    var currtokens = GameData.shared().currCoins
+                    GameData.shared().currCoins = currtokens + 300
+                    GameData.shared().save()
+                    
+                    tokenshopLbl.text = "\(GameData.shared().currCoins)"
                     
                     var alert = UIAlertView(title: "Thank You", message: "You now have 300 more coins!", delegate: nil, cancelButtonTitle: "OK")
                     alert.show()
                 case "com.flippysflight.purchasetwohundred":
                     
                     //Here you should put the function you want to execute when the purchase is complete
-                    var currtokens = UserDefaults.standard.integer(forKey: "currentTokens")
-                    var totaltokens = Int(currtokens) + 1000
-                    UserDefaults.standard.set("\(totaltokens)", forKey: "currentTokens")
-                    tokenshopLbl.text = "\(totaltokens)"
+                    
+                    var currtokens = GameData.shared().currCoins
+                    GameData.shared().currCoins = currtokens + 1000
+                    GameData.shared().save()
+                    
+                    tokenshopLbl.text = "\(GameData.shared().currCoins)"
                     
                     var alert = UIAlertView(title: "Thank You", message: "You now have 1000 more coins!", delegate: nil, cancelButtonTitle: "OK")
                     alert.show()
@@ -230,8 +236,10 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
                     break;
                 }
             }
-            tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
+            tokensshop = GameData.shared().currCoins
             tokenshopLbl.text = "\(tokensshop) Coins"
+            
+            
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == buyThirtyBtn {
             for product in list {
@@ -242,7 +250,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
                     break;
                 }
             }
-            tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
+            tokensshop = GameData.shared().currCoins
             tokenshopLbl.text = "\(tokensshop) Coins"
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == buySeventyFiveBtn {
@@ -254,7 +262,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
                     break;
                 }
             }
-            tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
+            tokensshop = GameData.shared().currCoins
             tokenshopLbl.text = "\(tokensshop) Coins"
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == buyTwoHundredBtn {
@@ -266,7 +274,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
                     break;
                 }
             }
-            tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
+            tokensshop = GameData.shared().currCoins
             tokenshopLbl.text = "\(tokensshop) Coins"
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == freeTokenBtn {
@@ -277,8 +285,9 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
             
             //for tokens ; currenttokens means all they have to spend ; tokens is what they have this round
             
-            UserDefaults.standard.set((UserDefaults.standard.integer(forKey: "currentTokens") + 2), forKey: "currentTokens")
-            tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
+            GameData.shared().currCoins = GameData.shared().currCoins + 2
+            tokensshop = GameData.shared().currCoins
+            GameData.shared().save()
             tokenshopLbl.text = "\(tokensshop) Coins"
         }
         
@@ -392,11 +401,13 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     
     func createCoinsAmount() {
         
-        if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+        /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
             tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
         } else {
             tokensshop = 0
-        }
+        }*/
+        
+        tokensshop = GameData.shared().currCoins
         
         tokenshopLbl.position = CGPoint(x: self.frame.midX , y: self.frame.height - 50)
         tokenshopLbl.text = "\(tokensshop) Coins"
