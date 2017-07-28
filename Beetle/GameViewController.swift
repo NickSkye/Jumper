@@ -71,9 +71,10 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     }
     
     func vungleSDKWillCloseAd(withViewInfo viewInfo: [AnyHashable : Any]!) {
-       
-        print(viewInfo)
+       print(viewInfo)
+        print(("\(viewInfo["didDownload"]!)").contains("1"))
         print(Variables.lasttokens) // change this to determine whether tokens were got
+        if ("\(viewInfo["completedView"]!)").contains("1") {
         if Variables.lasttokens > 0 {
             var doubledlastgamestokens = Variables.lasttokens * 2
             GameData.shared().currCoins = GameData.shared().currCoins + doubledlastgamestokens
@@ -85,9 +86,15 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             GameData.shared().currCoins = GameData.shared().currCoins + 2
             GameData.shared().save()
             print("plus two tokens")
-            
+            //BuyTokensScene().updateLabel(coinNum: GameData.shared().currCoins)
+        }
         }
         
+        if ("\(viewInfo["didDownload"]!)").contains("1") {
+            GameData.shared().currCoins = GameData.shared().currCoins + 3
+            GameData.shared().save()
+            print("plus three tokens")
+        }
         
     }
     func vungleSDKwillShowAd() {

@@ -320,6 +320,10 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     }
     
     
+    func updateLabel(coinNum: Int) {
+        tokenshopLbl.text = "\(coinNum) Coins"
+    }
+    
     func createBuyTokenScene() {
         
         let hour = Calendar.current.component(.hour, from: Date())
