@@ -446,8 +446,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //Calls processScore() function
                     processScore()
                     
-                    //Calls processTokens() function
-                    processTokens()
+                    //Calls processDoubleTokens() function
+                    processDoubleTokens()
                     
                     endGameProcess()
                     
@@ -1153,6 +1153,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func processTokens(){
         //Get total coins earned ever
         let tTokens = GameData.shared().totalCoins
+        
+        //Sets total tokens locally
+        let cTokens = GameData.shared().currCoins + tokens
+        
+        //Add current tokens to Game Data
+        GameData.shared().currCoins = cTokens
+        
+        //Add total tokens to Game Data
+        GameData.shared().totalCoins = tTokens + tokens
+    }
+    
+    /*
+     processTokens:
+     Does not return a value. Meant to be run while the game is being played and the token count changes when
+     collected
+     */
+    func processDoubleTokens(){
+        //Get total coins earned ever
+        let tTokens = GameData.shared().totalCoins
+        
+        //Double tokens
+        tokens = tokens * 2
         
         //Sets total tokens locally
         let cTokens = GameData.shared().currCoins + tokens
