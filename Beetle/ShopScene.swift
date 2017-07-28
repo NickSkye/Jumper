@@ -90,10 +90,14 @@ class ShopScene: SKScene {
             
                        //for tokens ; currenttokens means all they have to spend ; tokens is what they have this round
             
-                UserDefaults.standard.set((UserDefaults.standard.integer(forKey: "currentTokens") + 2), forKey: "currentTokens")
+                /*UserDefaults.standard.set((UserDefaults.standard.integer(forKey: "currentTokens") + 2), forKey: "currentTokens")
             tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
-            tokenshopLbl.text = "\(tokensshop) Coins"
+            tokenshopLbl.text = "\(tokensshop) Coins"*/
             
+            GameData.shared().currCoins = GameData.shared().currCoins + 2
+            
+            tokensshop = GameData.shared().currCoins
+            tokenshopLbl.text = "\(tokensshop) Coins"
         }
         
         //
@@ -170,12 +174,14 @@ class ShopScene: SKScene {
     
     func createCoinsAmount() {
         
-        if UserDefaults.standard.object(forKey: "currentTokens") != nil {
+        /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
             tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
         } else {
             tokensshop = 0
-        }
+        }*/
         
+        //Gets current tokens from GameData
+        tokensshop = GameData.shared().currCoins
         
         tokenshopLbl.position = CGPoint(x: self.frame.width - (0.181 * self.frame.width) , y: self.frame.height - (0.068 * self.frame.height))
         if tokensshop < 1000 {
