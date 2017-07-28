@@ -65,6 +65,8 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             
         } catch {
             print("ERROR")
+            var alert = UIAlertView(title: "Uh Oh!", message: "Ads currently unavailable. Please try again later.", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
         }
         
         
