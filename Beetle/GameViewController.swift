@@ -71,17 +71,24 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     }
     
     func vungleSDKWillCloseAd(withViewInfo viewInfo: [AnyHashable : Any]!) {
-       // var completed = viewInfo
+       
         print(viewInfo)
-        print(GameScene().getTokens()) // change this to determine whether tokens were got
-        /*
-        if completed as! Int == 1{
-            print("GOOD")
+        print(Variables.lasttokens) // change this to determine whether tokens were got
+        if Variables.lasttokens > 0 {
+            var doubledlastgamestokens = Variables.lasttokens * 2
+            GameData.shared().currCoins = GameData.shared().currCoins + doubledlastgamestokens
+            GameData.shared().save()
+            // icloud total tokens += doubledlastgamestokens
+            print("double last game")
         }
-        else {
-            print("BAD")
+        else if Variables.lasttokens == 0{
+            GameData.shared().currCoins = GameData.shared().currCoins + 2
+            GameData.shared().save()
+            print("plus two tokens")
+            
         }
-        */
+        
+        
     }
     func vungleSDKwillShowAd() {
         print("__________vungleSDKwillShowAd")

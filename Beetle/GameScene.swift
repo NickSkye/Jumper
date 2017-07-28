@@ -2,6 +2,9 @@
 
 import SpriteKit
 
+struct Variables {
+    static var lasttokens = 0
+}
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -28,6 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let invincibleBall = SKShapeNode()
     var invincible = false
     var tokens = Int(0)
+   // var lasttokens = Int(0)
     //let notificationName = Notification.Name("NotificationIdentifier")
     var running = Bool(false)
     var birdType = "bird1"
@@ -132,9 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-    func getTokens() -> Int {
-        return tokens
-    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
        
@@ -152,6 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             skinscene.scaleMode = .resizeFill
             skinskView.presentScene(skinscene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
             shopBtn.removeFromParent()
+            Variables.lasttokens = 0
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == profileBtn {
             let profilescene = ProfileScene(size: (view?.bounds.size)!)
@@ -162,6 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             profilescene.scaleMode = .resizeFill
             profileskView.presentScene(profilescene, transition: SKTransition.push(with: .down, duration: 1))
             profileBtn.removeFromParent()
+            Variables.lasttokens = 0
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == gcBtn {
             let gcscene = GameCenterScene(size: (view?.bounds.size)!)
@@ -172,6 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gcscene.scaleMode = .resizeFill
             gckView.presentScene(gcscene, transition: SKTransition.push(with: .left, duration: 1))
             gcBtn.removeFromParent()
+            Variables.lasttokens = 0
             }
         
         }
@@ -412,6 +417,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     processTokens()
                     endGameProcess()
                     
+                    Variables.lasttokens = -1
                     
                     restartScene()
                 }
@@ -420,7 +426,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ////////////////PUT AD HERE?
                     
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
-                    
+                    Variables.lasttokens = tokens
                     
                     /*
                     if UserDefaults.standard.object(forKey: "highestScore") != nil {
@@ -781,6 +787,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             run(coinSound)
             
             tokens += 1
+            //Variables.lasttokens += 1
             tokenLbl.text = "\(tokens)"
             feedback.impactOccurred()
             secondBody.node?.removeFromParent()
@@ -790,6 +797,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             run(coinSound)
             
             tokens += 1
+            //Variables.lasttokens += 1
             tokenLbl.text = "\(tokens)"
             feedback.impactOccurred()
             firstBody.node?.removeFromParent()

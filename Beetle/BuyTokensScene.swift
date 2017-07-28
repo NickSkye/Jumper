@@ -285,7 +285,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
             
             //for tokens ; currenttokens means all they have to spend ; tokens is what they have this round
             
-            GameData.shared().currCoins = GameData.shared().currCoins + 2
+            //GameData.shared().currCoins = GameData.shared().currCoins + 2
             tokensshop = GameData.shared().currCoins
             GameData.shared().save()
             tokenshopLbl.text = "\(tokensshop) Coins"

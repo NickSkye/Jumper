@@ -94,7 +94,7 @@ class ShopScene: SKScene {
             tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
             tokenshopLbl.text = "\(tokensshop) Coins"*/
             
-            GameData.shared().currCoins = GameData.shared().currCoins + 2
+            //GameData.shared().currCoins = GameData.shared().currCoins + 2
             
             //Set local variable to iCloid
             tokensshop = GameData.shared().currCoins
@@ -103,6 +103,7 @@ class ShopScene: SKScene {
             tokenshopLbl.text = "\(tokensshop) Coins"
             
             //Save data into iCloud
+        
             GameData.shared().save()
         }
         
