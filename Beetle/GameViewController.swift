@@ -65,6 +65,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             
         } catch {
             print("ERROR")
+            Variables.adAboutToPlay = false
             var alert = UIAlertView(title: "Uh Oh!", message: "Ads currently unavailable. Please try again later.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
@@ -97,13 +98,16 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             GameData.shared().save()
             print("plus three tokens")
         }
+        Variables.adAboutToPlay = false
         
     }
     func vungleSDKwillShowAd() {
         print("__________vungleSDKwillShowAd")
+        
     }
     func vungleSDKAdPlayableChanged(isAdPlayable:Bool) {
         print("__________vungleSDKAdPlayableChanged")
+        
     }
     
     /*

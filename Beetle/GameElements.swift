@@ -421,7 +421,7 @@ extension GameScene{
         
         //make random here
         //TOKEN
-        let randomNumberFlower = Int(random(min: 0, max: 15))
+        let randomNumberFlower = Int(random(min: 0, max: 20))
         if randomNumberFlower == 5 {
             wallPair.addChild(coinNode)
             
@@ -440,7 +440,7 @@ extension GameScene{
         
         //BOOST
         let randomNumberBoost = Int(random(min: 0, max: 10)) //50
-        if randomNumberBoost == 6 && randomNumberFlower != 5 && score > 10{ //25
+        if randomNumberBoost == 10 && randomNumberFlower != 5 && score > 20{ //25
             print("BOOST")
             wallPair.addChild(boostNode)
             boostNode.run(SKAction.scale(to: 1.0, duration: 1))
@@ -507,7 +507,7 @@ extension GameScene{
         
         //Randomly removes top or bottom wall or both// can change to different type of wall
         let randomBigBird = Int(random(min: 0, max: 30))
-        if randomBigBird == 15 && score > 20{
+        if randomBigBird == 15 && score > 25{
             bigBirdObstacle.addChild(bigBirdNode)
             //print("BIG BIRD CREATED")
             run(hawk)

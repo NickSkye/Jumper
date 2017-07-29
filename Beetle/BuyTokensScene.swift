@@ -217,7 +217,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
         // Create the method you want to call (see target before)
         
         // put all menu items on scene here as else if using same notation. CTRL-f menu items to find where to remove them on this page
-        if type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKLabelNode()) && type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKShapeNode()) {
+        if type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKLabelNode()) && type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKShapeNode()) && Variables.adAboutToPlay == false {
         if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == backBtn {
             let scene = GameScene(size: (view?.bounds.size)!)
             let skView = view!
@@ -279,6 +279,8 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == freeTokenBtn {
             MusicHelper.sharedHelper.stopBackgroundMusic()
+            Variables.adAboutToPlay = true
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
             
             
