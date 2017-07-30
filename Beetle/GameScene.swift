@@ -170,18 +170,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Variables.lasttokens = 0
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == gcBtn {
-            let gcscene = GameCenterScene(size: (view?.bounds.size)!)
-            let gckView = view!
-            gckView.showsFPS = false
-            gckView.showsNodeCount = false
-            gckView.ignoresSiblingOrder = false
-            gcscene.scaleMode = .resizeFill
-            gckView.presentScene(gcscene, transition: SKTransition.push(with: .left, duration: 1))
+            self.view?.window?.rootViewController?.present(GameCenterViewController(), animated: true, completion: nil)
+            
+            let homescene = GameScene(size: (view?.bounds.size)!)
+            let skView = view as! SKView
+            skView.showsFPS = false
+            skView.showsNodeCount = false
+            skView.ignoresSiblingOrder = false
+            homescene.scaleMode = .resizeFill
+            
+            skView.presentScene(homescene, transition: SKTransition.fade(withDuration: 0.1))
+ 
             gcBtn.removeFromParent()
+            
             Variables.lasttokens = 0
+            
             }
         
         }
+        
         
         if Variables.adAboutToPlay == false {
             
@@ -203,7 +210,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //////////////MOVED HERE
             if gameStarted == false{
                 isTouching = true
-                MusicHelper.sharedHelper.playBackgroundMusic()
+                if MusicHelper.sharedHelper.playing == false {
+                    MusicHelper.sharedHelper.playBackgroundMusic()
+                }
                 gameStarted =  true
                 
                 bird.physicsBody?.affectedByGravity = true
@@ -477,7 +486,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if pauseBtn.contains(location){
                 if self.isPaused == false{
                     self.isPaused = true
-                    // MusicHelper.sharedHelper.stopBackgroundMusic()
+                    
                     pauseBtn.texture = SKTexture(imageNamed: "play")
                    // pauseBtn.run(SKAction .move(to: CGPoint(x: (0.484 * self.frame.width), y: (0.136 * self.frame.height)) , duration: 0.1))
                     ////////////
@@ -504,7 +513,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     pauseRestart.removeAllActions()
                     self.isPaused = false
                     
-                    //  MusicHelper.sharedHelper.playBackgroundMusic()//
+                    
                     pauseBtn.texture = SKTexture(imageNamed: "pause")
                     
                 }
@@ -587,6 +596,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             UserDefaults.standard.set("\(gamesplayed)", forKey: "numberOfGamesPlayed")
             if gamesplayed % 5 == 0 {
                 print("every fifth game ad played")
+                Variables.adAboutToPlay = true
+                self.view?.addSubview(Variables.loaderView)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
             }
             
@@ -768,7 +779,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             
             feedback.impactOccurred()
-            MusicHelper.sharedHelper.stopBackgroundMusic()
+                if MusicHelper.sharedHelper.playing == true {
+                    MusicHelper.sharedHelper.stopBackgroundMusic()
+                }
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, error) in
                 node.speed = 0
@@ -906,7 +919,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if firstBody.categoryBitMask == CollisionBitMask.birdCategory && secondBody.categoryBitMask == CollisionBitMask.killerPillarCategory  && invincible == false {
             //killer Laser
             feedback.impactOccurred()
-            MusicHelper.sharedHelper.stopBackgroundMusic()
+            if MusicHelper.sharedHelper.playing == true {
+                MusicHelper.sharedHelper.stopBackgroundMusic()
+            }
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, error) in
                 node.speed = 0
@@ -926,7 +941,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if firstBody.categoryBitMask == CollisionBitMask.killerPillarCategory && secondBody.categoryBitMask == CollisionBitMask.birdCategory && invincible == false {
             //killer Laser
             feedback.impactOccurred()
-            MusicHelper.sharedHelper.stopBackgroundMusic()
+            if MusicHelper.sharedHelper.playing == true {
+                MusicHelper.sharedHelper.stopBackgroundMusic()
+            }
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, error) in
                 node.speed = 0
@@ -948,7 +965,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             feedback.impactOccurred()
             self.bird.removeFromParent()
-            MusicHelper.sharedHelper.stopBackgroundMusic()
+            if MusicHelper.sharedHelper.playing == true {
+                MusicHelper.sharedHelper.stopBackgroundMusic()
+            }
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, error) in
                 node.speed = 0
@@ -969,7 +988,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //BIG BIRD
             feedback.impactOccurred()
             self.bird.removeFromParent()
-            MusicHelper.sharedHelper.stopBackgroundMusic()
+            if MusicHelper.sharedHelper.playing == true {
+                MusicHelper.sharedHelper.stopBackgroundMusic()
+            }
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, error) in
                 node.speed = 0
@@ -1028,7 +1049,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     else {
                     
                     feedback.impactOccurred()
-                    MusicHelper.sharedHelper.stopBackgroundMusic()
+                        if MusicHelper.sharedHelper.playing == true {
+                            MusicHelper.sharedHelper.stopBackgroundMusic()
+                        }
                     enumerateChildNodes(withName: "wallPair", using: ({
                         (node, error) in
                         node.speed = 0
@@ -1086,7 +1109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     pauseRestart.removeAllActions()
                     self.isPaused = false
                     
-                    //  MusicHelper.sharedHelper.playBackgroundMusic()
+                  
                     pauseBtn.texture = SKTexture(imageNamed: "pause")
                 }
                 

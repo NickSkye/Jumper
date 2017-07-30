@@ -2,7 +2,7 @@
 import SpriteKit
 import Foundation
 
-
+//NOT USED ANYMORE. DISREGARD
 class GameCenterScene: SKScene {
     
     var gameStarted = Bool(false)
@@ -41,6 +41,7 @@ class GameCenterScene: SKScene {
         print("HERE")
         
         createGCScene()
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

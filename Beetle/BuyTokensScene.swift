@@ -88,6 +88,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
             
             list.append(product as! SKProduct)
         }
+         createBackBtn()
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue!) {
@@ -219,6 +220,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
         // put all menu items on scene here as else if using same notation. CTRL-f menu items to find where to remove them on this page
         if type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKLabelNode()) && type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKShapeNode()) && Variables.adAboutToPlay == false {
         if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == backBtn {
+        
             let scene = GameScene(size: (view?.bounds.size)!)
             let skView = view!
             skView.showsFPS = false
@@ -278,7 +280,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
             tokenshopLbl.text = "\(tokensshop) Coins"
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == freeTokenBtn {
-            MusicHelper.sharedHelper.stopBackgroundMusic()
+            //MusicHelper.sharedHelper.stopBackgroundMusic()
             Variables.adAboutToPlay = true
             self.view?.addSubview(Variables.loaderView)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
@@ -341,7 +343,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
         background.size = (self.view?.bounds.size)!
         self.addChild(background)
         
-        createBackBtn()
+        //createBackBtn()
         createBuyFiveBtn()
         createBuyThirtyBtn()
         createBuySeventyFiveBtn()

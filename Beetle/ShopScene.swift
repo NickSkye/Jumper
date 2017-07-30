@@ -83,7 +83,7 @@ class ShopScene: SKScene {
             skView.presentScene(scene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == freeTokenBtn {
-            MusicHelper.sharedHelper.stopBackgroundMusic()
+            //MusicHelper.sharedHelper.stopBackgroundMusic()
             Variables.adAboutToPlay = true
             
             self.view?.addSubview(Variables.loaderView)

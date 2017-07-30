@@ -59,8 +59,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     func playVungleAd() {
         do {
             
-        
-        try sdk?.playAd(self, withOptions: nil)
+                try sdk?.playAd(self, withOptions: nil)
         //Variables.loaderView.removeFromSuperview()
             
         } catch {
@@ -69,6 +68,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             var alert = UIAlertView(title: "Uh Oh!", message: "Ads currently unavailable. Please try again later.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             Variables.loaderView.removeFromSuperview()
+           // MusicHelper.sharedHelper.playBackgroundMusic()
         }
         
         
@@ -101,9 +101,12 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             print("plus three tokens")
         }
         Variables.adAboutToPlay = false
+        MusicHelper.sharedHelper.playBackgroundMusic()
         
     }
     func vungleSDKwillShowAd() {
+        MusicHelper.sharedHelper.stopBackgroundMusic()
+
         print("__________vungleSDKwillShowAd")
         
     }
