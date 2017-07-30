@@ -146,7 +146,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // put all menu items on scene here as else if using same notation. CTRL-f menu items to find where to remove them on this page
         //THIS FIRST IF ENSURES IT DOESNT CRASH
-        if type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKLabelNode()) && type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKShapeNode()) {
+        if type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKLabelNode()) && type(of: nodes(at: (touches.first?.location(in: self))!)[0]) != type(of: SKShapeNode()) && Variables.adAboutToPlay == false{
         if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == shopBtn {
             let skinscene = ShopScene(size: (view?.bounds.size)!)
             let skinskView = view!
@@ -183,7 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         }
         
-        
+        if Variables.adAboutToPlay == false {
             
         for touch in touches{
             
@@ -426,6 +426,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 else if adBtn.contains(location){
                     //for score
                     ////////////////PUT AD HERE?
+                    Variables.adAboutToPlay = true
                     self.view?.addSubview(Variables.loaderView)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
                     Variables.lasttokens = tokens
@@ -562,6 +563,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         ////
         //////
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>,
