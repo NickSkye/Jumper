@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Beetle/GameScene.swift"
-            timestampString = "523032229.366831"
+            timestampString = "523089713.520638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "752"
-            endingLineNumber = "752"
+            startingLineNumber = "753"
+            endingLineNumber = "753"
             landmarkName = "didBegin(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Beetle/GameScene.swift"
-            timestampString = "523032229.366831"
+            timestampString = "523089713.520638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "815"
-            endingLineNumber = "815"
+            startingLineNumber = "816"
+            endingLineNumber = "816"
             landmarkName = "didBegin(_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -85,6 +85,8 @@ class ShopScene: SKScene {
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == freeTokenBtn {
             MusicHelper.sharedHelper.stopBackgroundMusic()
             Variables.adAboutToPlay = true
+            
+            self.view?.addSubview(Variables.loaderView)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
             
             

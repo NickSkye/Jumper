@@ -19,6 +19,7 @@
 		D9E9D9451E3483AA00754A1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9431E3483AA00754A1A /* LaunchScreen.storyboard */; };
 		D9E9D94D1E3484B900754A1A /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D94C1E3484B900754A1A /* GameElements.swift */; };
 		D9E9D9531E34A13100754A1A /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9521E34A13100754A1A /* player.atlas */; };
+		F303E64E1F2DB4C700F1EB29 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303E64D1F2DB4C700F1EB29 /* SpinnerView.swift */; };
 		F32ABE391EEA69B3000A217E /* MusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32ABE381EEA69B3000A217E /* MusicHelper.swift */; };
 		F32ABE3B1EEA6A6D000A217E /* gno.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F32ABE3A1EEA6A6D000A217E /* gno.mp3 */; };
 		F32ABE3F1EEB5863000A217E /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32ABE3E1EEB5863000A217E /* ShopScene.swift */; };
@@ -73,6 +74,7 @@
 		D9E9D9461E3483AA00754A1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E9D94C1E3484B900754A1A /* GameElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
 		D9E9D9521E34A13100754A1A /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
+		F303E64D1F2DB4C700F1EB29 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		F32ABE381EEA69B3000A217E /* MusicHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicHelper.swift; sourceTree = "<group>"; };
 		F32ABE3A1EEA6A6D000A217E /* gno.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gno.mp3; path = ../../gno.mp3; sourceTree = "<group>"; };
 		F32ABE3E1EEB5863000A217E /* ShopScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopScene.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				F3BD4CFC1EFD69C50016DC52 /* BuyTokensScene.swift */,
 				F3675ABF1F0DEF9E00B17007 /* GameCenterScene.swift */,
 				F35F098E1F134CAA000ADC44 /* GameCenterViewController.swift */,
+				F303E64D1F2DB4C700F1EB29 /* SpinnerView.swift */,
 			);
 			name = FlippysFlight;
 			path = Beetle;
@@ -348,6 +351,7 @@
 				F35F098F1F134CAA000ADC44 /* GameCenterViewController.swift in Sources */,
 				D9E9D93B1E3483AA00754A1A /* GameScene.swift in Sources */,
 				F3BD4CFD1EFD69C50016DC52 /* BuyTokensScene.swift in Sources */,
+				F303E64E1F2DB4C700F1EB29 /* SpinnerView.swift in Sources */,
 				D9E9D93D1E3483AA00754A1A /* GameViewController.swift in Sources */,
 				4133EDFA1F1104AE000BE200 /* GameData.m in Sources */,
 				D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */,

@@ -61,13 +61,14 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             
         
         try sdk?.playAd(self, withOptions: nil)
-        
+        //Variables.loaderView.removeFromSuperview()
             
         } catch {
             print("ERROR")
             Variables.adAboutToPlay = false
             var alert = UIAlertView(title: "Uh Oh!", message: "Ads currently unavailable. Please try again later.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
+            Variables.loaderView.removeFromSuperview()
         }
         
         
@@ -75,6 +76,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     
     func vungleSDKWillCloseAd(withViewInfo viewInfo: [AnyHashable : Any]!) {
        print(viewInfo)
+        Variables.loaderView.removeFromSuperview()
         print(("\(viewInfo["didDownload"]!)").contains("1"))
         print(Variables.lasttokens) // change this to determine whether tokens were got
         if ("\(viewInfo["completedView"]!)").contains("1") {

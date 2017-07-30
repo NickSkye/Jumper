@@ -5,6 +5,7 @@ import SpriteKit
 struct Variables {
     static var lasttokens = 0
     static var adAboutToPlay = false
+    static var loaderView = SpinnerView(frame: CGRect(x: 150, y: 200, width: 150, height: 150))
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -425,7 +426,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 else if adBtn.contains(location){
                     //for score
                     ////////////////PUT AD HERE?
-                    
+                    self.view?.addSubview(Variables.loaderView)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
                     Variables.lasttokens = tokens
                     
