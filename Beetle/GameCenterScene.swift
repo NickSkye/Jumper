@@ -92,13 +92,16 @@ class GameCenterScene: SKScene {
     }
     
     func createHSLbl() {
-        if UserDefaults.standard.object(forKey: "highestScore") != nil {
+        /*if UserDefaults.standard.object(forKey: "highestScore") != nil {
             print("ERROR1")
             hscore = UserDefaults.standard.integer(forKey: "highestScore")
             
         } else {
             UserDefaults.standard.set(0, forKey: "highestScore")
-        }
+        }*/
+        
+        //Get highscore from GameData/iCloud
+        hscore = GameData.shared().highScore
 
         highscoreLbl.position = CGPoint(x: self.frame.midX , y: self.frame.height - 100)
         highscoreLbl.text = "High Score: \(hscore)"

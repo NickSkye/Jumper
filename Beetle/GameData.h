@@ -11,6 +11,9 @@
 //GameData Updated Notification
 static NSString* const SSGameDataUpdatedFromiCloud = @"SSGameDataUpdatedFromiCloud";
 
+//Array of characters
+
+
 @interface GameData : NSObject <NSCoding>
 
 //Instance Variables: Kept track locally in each game instance then added to Permanent variables below.

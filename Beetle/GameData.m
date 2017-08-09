@@ -20,6 +20,7 @@ static NSString* const SSGameDataTotalCoinsKey = @"totalCoins";
 static NSString* const SSGameDataNumTimesPlayedKey = @"numTimesPlayed";
 static NSString* const SSGameDataTotalCoinsSpentKey = @"totalCoinsSpent";
 
+
 //Key Variables for Keychain Wrapper Checksum
 static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
 
@@ -203,6 +204,7 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
         //Call synchonize function
         [iCloudStore synchronize];
     }
+
 }
 
 //NOT COMPLETE YET
