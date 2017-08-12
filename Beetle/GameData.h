@@ -32,6 +32,8 @@ static NSString* const SSGameDataUpdatedFromiCloud = @"SSGameDataUpdatedFromiClo
 @property (assign, nonatomic) long totalCoinsSpent;
 @property (assign, nonatomic) long currCoins;
 
+//For purchased character items
+@property (strong, nonatomic) NSMutableArray *purchased;
 
 //Defaults for Cocoa Touch Class
 +(instancetype)sharedGameData;

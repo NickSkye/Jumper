@@ -47,6 +47,8 @@ class NewSkinScene: SKScene {
     //add stuff to game elements such as createSkinsButton and then implement in createSkinScene.
     
     override func didMove(to view: SKView) {
+        //characters = GameData.shared().purchased as! [String]
+        
       // UserDefaults.standard.removeObject(forKey: "characters")
         if (UserDefaults.standard.object(forKey: "birdType") as! String) != nil {
          

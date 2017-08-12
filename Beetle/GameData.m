@@ -19,6 +19,7 @@ static NSString* const SSGameDataCoins = @"numCoins";
 static NSString* const SSGameDataTotalCoinsKey = @"totalCoins";
 static NSString* const SSGameDataNumTimesPlayedKey = @"numTimesPlayed";
 static NSString* const SSGameDataTotalCoinsSpentKey = @"totalCoinsSpent";
+static NSString* const SSGameDataPurchasedBirds = @"purchasedBirds";
 
 
 //Key Variables for Keychain Wrapper Checksum
@@ -37,6 +38,19 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
         }
     }
     return self;
+}
+
+- (NSArray *) purchased
+{
+    if (_purchased){
+        return _purchased;
+    }
+    
+    _purchased = [[[NSUbiquitousKeyValueStore defaultStore] arrayForKey:@"availableBirds"] mutableCopy];
+    
+    if(!_purchased) _purchased = [NSMutableArray array];
+    
+    return _purchased;
 }
 
 + (instancetype)sharedGameData
@@ -124,6 +138,7 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     [encoder encodeDouble:self.numTimesPlayed forKey: SSGameDataNumTimesPlayedKey];
     [encoder encodeDouble:self.coinsSpent forKey:SSGameDataTotalCoinsSpentKey];
     [encoder encodeDouble:self.currCoins forKey: SSGameDataCoins];
+    [encoder encodeObject:self.purchased forKey: SSGameDataPurchasedBirds];
 }
 
 //Decoder
@@ -138,6 +153,13 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
         _numTimesPlayed = [aDecoder decodeDoubleForKey:SSGameDataNumTimesPlayedKey];
         _totalCoinsSpent = [aDecoder decodeDoubleForKey:SSGameDataTotalCoinsSpentKey];
         _currCoins = [aDecoder decodeDoubleForKey: SSGameDataCoins];
+        
+        //For purchased array.
+        _purchased = [[aDecoder decodeObjectForKey:SSGameDataPurchasedBirds] mutableCopy];
+        
+        if(_purchased){
+            _purchased = [[NSMutableArray alloc] init];
+        }
     }
     
     return self;
@@ -204,6 +226,16 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
         //Call synchonize function
         [iCloudStore synchronize];
     }
+    
+    //Get array of birds from iCloud
+    NSMutableArray *birds = [iCloudStore objectForKey:SSGameDataPurchasedBirds];
+    
+    if (self.purchased != birds){
+        [iCloudStore setObject:self.purchased forKey:SSGameDataPurchasedBirds];
+        
+        //Call synchonize function
+        [iCloudStore synchronize];
+    }
 
 }
 
@@ -232,6 +264,9 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     //Get number of current coins from iCloud
     long cloudCoins = [iCloudStore doubleForKey: SSGameDataCoins];
     
+    //Get array of birds from iCloud
+    NSMutableArray *birds = [iCloudStore objectForKey:SSGameDataPurchasedBirds];
+    
     //Store High score
     self.highScore = MAX(cloudHighScore, self.highScore);
     
@@ -246,6 +281,9 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
     
     //Store number of coins
     self.currCoins = cloudCoins;
+    
+    //Store array of birds
+    self.purchased = birds;
     
     [self save];
     
