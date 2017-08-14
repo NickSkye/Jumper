@@ -140,12 +140,12 @@ class ShopScene: SKScene {
 
     
     func createShopScene() {
-        let hour = Calendar.current.component(.hour, from: Date())
-        print("hour \(hour)")
+        /*let hour = Calendar.current.component(.hour, from: Date())
+        print("hour \(hour)")*/
         var background = SKSpriteNode(imageNamed: "city")
-        if hour > 19 || hour < 7 {
+        /*if hour > 19 || hour < 7 {
             background = SKSpriteNode(imageNamed: "newBG")
-        }
+        }*/
        // let background = SKSpriteNode(imageNamed: "bg")
         background.anchorPoint = CGPoint.init(x: 0, y: 0)
         //background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)

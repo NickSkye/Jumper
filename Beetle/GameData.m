@@ -157,9 +157,9 @@ static NSString* const SSGameDataChecksumKey = @"SSGameDataChecksumKey";
         //For purchased array.
         _purchased = [[aDecoder decodeObjectForKey:SSGameDataPurchasedBirds] mutableCopy];
         
-        if(_purchased){
+        /*if(_purchased){
             _purchased = [[NSMutableArray alloc] init];
-        }
+        }*/
     }
     
     return self;

@@ -47,21 +47,21 @@ class NewSkinScene: SKScene {
     //add stuff to game elements such as createSkinsButton and then implement in createSkinScene.
     
     override func didMove(to view: SKView) {
-        //characters = GameData.shared().purchased as! [String]
+        characters = GameData.shared().purchased as! [String]
+        
+        print(characters)
         
       // UserDefaults.standard.removeObject(forKey: "characters")
         if (UserDefaults.standard.object(forKey: "birdType") as! String) != nil {
-         
             birdInUse = UserDefaults.standard.object(forKey: "birdType") as! String
         }
         else {
-            
             birdInUse = "bird1"
         }
         
        print(birdInUse)
         
-        if UserDefaults.standard.array(forKey: "characters") != nil {
+        /*if UserDefaults.standard.array(forKey: "characters") != nil {
             
             characters = UserDefaults.standard.array(forKey: "characters") as! [String]
             
@@ -70,6 +70,17 @@ class NewSkinScene: SKScene {
                 characters.append("bird1")
             }
             UserDefaults.standard.set(characters, forKey: "characters")
+        }*/
+        
+        //Checks if array is empty and sets the character to the default character
+        if characters.isEmpty {
+            characters.append("bird1")
+            
+            //Adds "bird1" to the GameData purchased array, then save it to iCloud
+            GameData.shared().purchased.add("bird1")
+            GameData.shared().save()
+            
+            characters = GameData.shared().purchased as! [String]
         }
         
         createProfileScene()
@@ -117,9 +128,6 @@ class NewSkinScene: SKScene {
                     buyFirstBtn.texture = SKTexture(imageNamed: "character-button-selected")
                     birdInUse = "bird1"
                 }
-            
-        
-            
         }
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == buySecondBtn {
             //if not bought
@@ -153,8 +161,16 @@ class NewSkinScene: SKScene {
                         
                         GameData.shared().save()
                         
-                        self.characters.append("ducky")
-                        UserDefaults.standard.set(self.characters, forKey: "characters")
+                        //Adds new purchase to GameData
+                        GameData.shared().purchased.add("ducky")
+                        GameData.shared().save()
+                        
+                        print(GameData.shared().purchased)
+                        
+                        self.characters = GameData.shared().purchased as! [String]
+                        
+                        //self.characters.append("ducky")
+                        //UserDefaults.standard.set(self.characters, forKey: "characters")
                         self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buySecondBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
@@ -162,9 +178,6 @@ class NewSkinScene: SKScene {
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     //if alert answer == yes  {
                 }
-                
-                
-                
             }
             else { //if already bought this will enable it
                 if (UserDefaults.standard.object(forKey: "birdType") as! String) != "ducky" {
@@ -191,7 +204,6 @@ class NewSkinScene: SKScene {
              print(birdInUse)
             //if not bought
             if !(characters.contains("rainbowbird1")) {
-                
                 var tokensshop = Int(0)
                 /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
                     tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
@@ -217,21 +229,22 @@ class NewSkinScene: SKScene {
                         GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
                         
-                        self.characters.append("rainbowbird1")
-                        UserDefaults.standard.set(self.characters, forKey: "characters")
+                        //self.characters.append("rainbowbird1")
+                        //UserDefaults.standard.set(self.characters, forKey: "characters")
+                        
+                        //Adds new purchase to GameData
+                        GameData.shared().purchased.add("rainbowbird1")
+                        GameData.shared().save()
+                        
+                        self.characters = GameData.shared().purchased as! [String]
+                        
                         self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buyThirdBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     //if alert answer == yes  {
-                    
-                    
-                    
                 }
-                
-                
-                
             }
             else { //if already bought this will enable it
                 if (UserDefaults.standard.object(forKey: "birdType") as! String) != "rainbowbird1" {
@@ -284,21 +297,22 @@ class NewSkinScene: SKScene {
                         GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
                         
-                        self.characters.append("steveBird1")
-                        UserDefaults.standard.set(self.characters, forKey: "characters")
+                        //self.characters.append("steveBird1")
+                        //UserDefaults.standard.set(self.characters, forKey: "characters")
+                        
+                        //Adds new purchase to GameData
+                        GameData.shared().purchased.add("steveBird1")
+                        GameData.shared().save()
+                        
+                        self.characters = GameData.shared().purchased as! [String]
+                        
                         self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buyFourthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     //if alert answer == yes  {
-                    
-                    
-                    
                 }
-                
-                
-                
             }
             else { //if already bought this will enable it
                 if (UserDefaults.standard.object(forKey: "birdType") as! String) != "steveBird1" {
@@ -323,7 +337,6 @@ class NewSkinScene: SKScene {
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == buyFifthBtn {
              print(birdInUse)
             if !(characters.contains("derpyBird1")) {
-                
                 var tokensshop = Int(0)
                 /*if UserDefaults.standard.object(forKey: "currentTokens") != nil {
                     tokensshop = UserDefaults.standard.integer(forKey: "currentTokens")
@@ -347,21 +360,24 @@ class NewSkinScene: SKScene {
                         GameData.shared().currCoins = tokensshop
                         GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
-                        self.characters.append("derpyBird1")
-                        UserDefaults.standard.set(self.characters, forKey: "characters")
+                        
+                        //Adds new purchase to GameData
+                        GameData.shared().purchased.add("ducky")
+                        GameData.shared().save()
+                        
+                        self.characters = GameData.shared().purchased as! [String]
+                        
+                        //self.characters.append("derpyBird1")
+                        //UserDefaults.standard.set(self.characters, forKey: "characters")
                         self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buyFifthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
                     self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
                     //if alert answer == yes  {
-                    
-                    
-                    
+ 
                 }
-                
-                
-                
+  
             }
             else { //if already bought this will enable it
                 if (UserDefaults.standard.object(forKey: "birdType") as! String) != "derpyBird1" {
@@ -408,8 +424,16 @@ class NewSkinScene: SKScene {
                         GameData.shared().currCoins = tokensshop
                         GameData.shared().coinsSpent = GameData.shared().coinsSpent + 5
                         GameData.shared().save()
-                        self.characters.append("fatBird1")
-                        UserDefaults.standard.set(self.characters, forKey: "characters")
+                        
+                        //self.characters.append("fatBird1")
+                        //UserDefaults.standard.set(self.characters, forKey: "characters")
+                        
+                        //Adds new purchase to GameData
+                        GameData.shared().purchased.add("fatBird1")
+                        GameData.shared().save()
+                        
+                        self.characters = GameData.shared().purchased as! [String]
+                        
                         self.tokenshopLbl.text = "\(GameData.shared().currCoins)"
                         self.buySixthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
@@ -420,9 +444,6 @@ class NewSkinScene: SKScene {
                     
                     
                 }
-                
-                
-                
             }
             else { //if already bought this will enable it
                 if (UserDefaults.standard.object(forKey: "birdType") as! String) != "fatBird1" {
@@ -473,13 +494,14 @@ class NewSkinScene: SKScene {
     
     func createProfileScene() {
        
-        let hour = Calendar.current.component(.hour, from: Date())
+        /*let hour = Calendar.current.component(.hour, from: Date())
         print("hour \(hour)")
-        var background = SKSpriteNode(imageNamed: "city")
+
         if hour > 19 || hour < 7 {
             background = SKSpriteNode(imageNamed: "newBG")
-        }
+        }*/
         //let background = SKSpriteNode(imageNamed: "bg")
+        var background = SKSpriteNode(imageNamed: "city")
         background.anchorPoint = CGPoint.init(x: 0, y: 0)
         //background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
         background.name = "background"
@@ -648,9 +670,6 @@ class NewSkinScene: SKScene {
         buySixthBtn.name = "fatBird1"
         self.addChild(buySixthBtn)
     }
-    
-    
-    
 }
 
 
