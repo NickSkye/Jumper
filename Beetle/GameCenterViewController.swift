@@ -132,6 +132,7 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
         */
         
         var hscore = GameData.shared().highScore
+    
         // Submit score to GC leaderboard
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
         bestScoreInt.value = Int64(hscore)
@@ -156,7 +157,7 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
      func checkGCLeaderboard() {
         let gcVC = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
-        gcVC.viewState = .leaderboards
+        gcVC.viewState = .default
         gcVC.leaderboardIdentifier = LEADERBOARD_ID
         present(gcVC, animated: true, completion: nil)
     }
