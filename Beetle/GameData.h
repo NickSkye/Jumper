@@ -31,6 +31,7 @@ static NSString* const SSGameDataUpdatedFromiCloud = @"SSGameDataUpdatedFromiClo
 @property (assign, nonatomic) long numTimesPlayed;
 @property (assign, nonatomic) long totalCoinsSpent;
 @property (assign, nonatomic) long currCoins;
+@property (assign, nonatomic) NSString* currBird;
 
 //For purchased character items
 @property (strong, nonatomic) NSMutableArray *purchased;

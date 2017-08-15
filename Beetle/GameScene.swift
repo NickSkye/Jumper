@@ -591,9 +591,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tokens = 0
         if UserDefaults.standard.object(forKey: "numberOfGamesPlayed") != nil {
             print("plus 1 game")
-            var gamesplayed = UserDefaults.standard.integer(forKey: "numberOfGamesPlayed")
+            /*var gamesplayed = UserDefaults.standard.integer(forKey: "numberOfGamesPlayed")
             gamesplayed += 1
-            UserDefaults.standard.set("\(gamesplayed)", forKey: "numberOfGamesPlayed")
+            UserDefaults.standard.set("\(gamesplayed)", forKey: "numberOfGamesPlayed")*/
+            
+            //Gets numTimes played from GameData
+            var gamesplayed = GameData.shared().numTimesPlayed
+            
+            //Increment by 1
+            gamesplayed += 1
+            
+            //Reset GameData.numTimesPlayed
+            GameData.shared().numTimesPlayed = gamesplayed
+            
+            //Save
+            GameData.shared().save()
+            
             if gamesplayed % 5 == 0 {
                 print("every fifth game ad played")
                 Variables.adAboutToPlay = true
