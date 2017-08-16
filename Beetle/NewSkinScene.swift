@@ -362,7 +362,7 @@ class NewSkinScene: SKScene {
                         GameData.shared().save()
                         
                         //Adds new purchase to GameData
-                        GameData.shared().purchased.add("ducky")
+                        GameData.shared().purchased.add("derpyBird1")
                         GameData.shared().save()
                         
                         self.characters = GameData.shared().purchased as! [String]
