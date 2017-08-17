@@ -499,10 +499,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ////////////
                     pauseRestart = SKSpriteNode(imageNamed: "restart")
                     pauseRestart.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))
-                    pauseRestart.position = CGPoint(x: self.frame.midX / 2, y: self.frame.midY)
+                    pauseRestart.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
                     pauseRestart.zPosition = 9
                     pauseRestart.name = "pauseRestart"
                     pauseRestart.isHidden = false
+                    
+
                    
                     self.addChild(pauseRestart)
                     print("HERE")
