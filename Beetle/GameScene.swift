@@ -158,8 +158,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shopBtn.removeFromParent()
             Variables.lasttokens = 0
         }
-        else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == profileBtn {
-            let profilescene = ProfileScene(size: (view?.bounds.size)!)
+        /*else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == profileBtn {
+            /*let profilescene = ProfileScene(size: (view?.bounds.size)!)
             let profileskView = view!
             profileskView.showsFPS = false
             profileskView.showsNodeCount = false
@@ -167,8 +167,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             profilescene.scaleMode = .resizeFill
             profileskView.presentScene(profilescene, transition: SKTransition.push(with: .down, duration: 1))
             profileBtn.removeFromParent()
-            Variables.lasttokens = 0
-        }
+            Variables.lasttokens = 0*/
+            
+            let alert = UIAlertController(title: "Not so Fast!", message: "This feature will be coming soon, keep an eye out for future updates!", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay!", style: .destructive, handler: nil))
+            
+            self.view?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            
+        }*/
         else if (nodes(at: (touches.first?.location(in: self))!)[0] as? SKSpriteNode)! == gcBtn {
             self.view?.window?.rootViewController?.present(GameCenterViewController(), animated: true, completion: nil)
             
@@ -754,7 +761,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createLogo()
         //skin
         createShopBtn()
-        createProfileBtn()
+        //createProfileBtn()
         createGameCenterBtn()
         
         taptoplayLbl = createTaptoplayLabel()
