@@ -691,7 +691,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if UserDefaults.standard.object(forKey: "birdType") != nil {
             birdType = UserDefaults.standard.string(forKey: "birdType")!
         } else {
-            UserDefaults.standard.set("bird1", forKey: "birdType")
+            UserDefaults.standard.set("steveBird1", forKey: "birdType")
         }
         
         //////
