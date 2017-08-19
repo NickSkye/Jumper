@@ -172,7 +172,7 @@ class NewSkinScene: SKScene {
                         
                         //self.characters.append("ducky")
                         //UserDefaults.standard.set(self.characters, forKey: "characters")
-                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) coins"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) Coins"
                         self.buySecondBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -239,7 +239,7 @@ class NewSkinScene: SKScene {
                         
                         self.characters = GameData.shared().purchased as! [String]
                         
-                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) coins"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) Coins"
                         self.buyThirdBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -307,7 +307,7 @@ class NewSkinScene: SKScene {
                         
                         self.characters = GameData.shared().purchased as! [String]
                         
-                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) coins"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) Coins"
                         self.buyFourthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -370,7 +370,7 @@ class NewSkinScene: SKScene {
                         
                         //self.characters.append("derpyBird1")
                         //UserDefaults.standard.set(self.characters, forKey: "characters")
-                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) coins"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) Coins"
                         self.buyFifthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -435,7 +435,7 @@ class NewSkinScene: SKScene {
                         
                         self.characters = GameData.shared().purchased as! [String]
                         
-                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) coins"
+                        self.tokenshopLbl.text = "\(GameData.shared().currCoins) Coins"
                         self.buySixthBtn.texture = SKTexture(imageNamed: "character-button-unselected")
                     }))
                     alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
@@ -531,7 +531,7 @@ class NewSkinScene: SKScene {
         tokensshop = GameData.shared().currCoins
         
         tokenshopLbl.position = CGPoint(x: self.frame.width - (0.121 * self.frame.width) , y: self.frame.height - (0.068 * self.frame.height))
-        tokenshopLbl.text = "\(tokensshop) coins"
+        tokenshopLbl.text = "\(tokensshop) Coins"
         tokenshopLbl.fontColor = UIColor(red: 238/255, green: 221/255, blue: 130/255, alpha: 1)
         tokenshopLbl.zPosition = 5
         tokenshopLbl.fontSize = 20
