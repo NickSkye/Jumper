@@ -605,7 +605,7 @@ class NewSkinScene: SKScene {
             buyThirdBtn = SKSpriteNode(imageNamed: "character-button-locked3")
         }
         buyThirdBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
-        buyThirdBtn.position = CGPoint(x: self.frame.midX / 2, y: self.frame.midY)
+        buyThirdBtn.position = CGPoint(x: self.frame.midX / 2, y: self.frame.height * 0.48)
         buyThirdBtn.zPosition = 8
         buyThirdBtn.name = "rainbowbird1"
         self.addChild(buyThirdBtn)
@@ -626,7 +626,7 @@ class NewSkinScene: SKScene {
         }
         
         buyFourthBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
-        buyFourthBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.midY)
+        buyFourthBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.48)
         buyFourthBtn.zPosition = 8
         buyFourthBtn.name = "steveBird1"
         self.addChild(buyFourthBtn)
