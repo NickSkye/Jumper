@@ -582,7 +582,7 @@ class NewSkinScene: SKScene {
             }
         }
         else { //if not bought
-            buySecondBtn = SKSpriteNode(imageNamed: "character-button-locked2")
+            buySecondBtn = SKSpriteNode(imageNamed: "locked-duck")
         }
         buySecondBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
         buySecondBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.7)
@@ -602,7 +602,7 @@ class NewSkinScene: SKScene {
             }
         }
         else { //if not bought
-            buyThirdBtn = SKSpriteNode(imageNamed: "character-button-locked3")
+            buyThirdBtn = SKSpriteNode(imageNamed: "locked-rainbow")
         }
         buyThirdBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
         buyThirdBtn.position = CGPoint(x: self.frame.midX / 2, y: self.frame.height * 0.48)
@@ -622,7 +622,7 @@ class NewSkinScene: SKScene {
             }
         }
         else { //if not bought
-            buyFourthBtn = SKSpriteNode(imageNamed: "character-button-locked4")
+            buyFourthBtn = SKSpriteNode(imageNamed: "locked-yellow")
         }
         
         buyFourthBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
@@ -643,7 +643,7 @@ class NewSkinScene: SKScene {
             }
         }
         else { //if not bought
-            buyFifthBtn = SKSpriteNode(imageNamed: "character-button-locked5")
+            buyFifthBtn = SKSpriteNode(imageNamed: "locked-derp")
         }
         buyFifthBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
         buyFifthBtn.position = CGPoint(x: self.frame.midX / 2, y: self.frame.midY / 2)
@@ -663,7 +663,7 @@ class NewSkinScene: SKScene {
             }
         }
         else { //if not bought
-            buySixthBtn = SKSpriteNode(imageNamed: "character-button-locked6")
+            buySixthBtn = SKSpriteNode(imageNamed: "locked-orange")
         }
         buySixthBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
         buySixthBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.midY / 2)
