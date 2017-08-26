@@ -111,7 +111,7 @@ class NewSkinScene: SKScene {
                     
                     UserDefaults.standard.set("steveBird1", forKey: "birdType")
                     
-                    (childNode(withName: birdInUse) as! SKSpriteNode).texture = SKTexture(imageNamed: "character-button-unselected")
+                    (childNode(withName: birdInUse) as! SKSpriteNode).texture = SKTexture(imageNamed: checkBird())
                     buyFirstBtn.texture = SKTexture(imageNamed: "selected-flippy")
                     birdInUse = "steveBird1"
                     /*buySecondBtn = SKSpriteNode(imageNamed: "character-button-unselected")
