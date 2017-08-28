@@ -557,7 +557,7 @@ class NewSkinScene: SKScene {
     }
     
     func createFirstFriendBtn() {
-        if birdInUse == "bird1" {
+        if birdInUse == "steveBird1" {
             buyFirstBtn = SKSpriteNode(imageNamed: "selected-flippy")
         }
         else {
@@ -566,7 +566,7 @@ class NewSkinScene: SKScene {
         buyFirstBtn.size = CGSize(width:(0.242 * self.frame.width), height: (0.136 * self.frame.height))
         buyFirstBtn.position = CGPoint(x: self.frame.midX / 2, y: self.frame.height * 0.7)
         buyFirstBtn.zPosition = 8
-        buyFirstBtn.name = "bird1"
+        buyFirstBtn.name = "steveBird1"
         self.addChild(buyFirstBtn)
     }
     
@@ -612,8 +612,8 @@ class NewSkinScene: SKScene {
     //STEVE BIRD IS FOURTH HERE
     func createFourthFriendBtn() {
         //checks if character is bought
-        if characters.contains("steveBird1") {
-            if birdInUse == "steveBird1" { //if bought and in use
+        if characters.contains("bird1") {
+            if birdInUse == "bird1" { //if bought and in use
                 buyFourthBtn = SKSpriteNode(imageNamed: "selected-yellow")
             }
             else { //if bought and not in use
@@ -627,7 +627,7 @@ class NewSkinScene: SKScene {
         buyFourthBtn.size = CGSize(width:(0.242 * self.frame.width), height:(0.136 * self.frame.height))
         buyFourthBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height * 0.48)
         buyFourthBtn.zPosition = 8
-        buyFourthBtn.name = "steveBird1"
+        buyFourthBtn.name = "bird1"
         self.addChild(buyFourthBtn)
     }
     
@@ -678,7 +678,7 @@ class NewSkinScene: SKScene {
         var image = ""
         
         switch(birdInUse){
-        case "bird1":
+        case "steveBird1":
             image = "unselected-flippy"
             break
         case "ducky":
@@ -687,7 +687,7 @@ class NewSkinScene: SKScene {
         case "rainbowbird1":
             image = "unselected-rainbow"
             break
-        case "steveBird1":
+        case "bird1":
             image = "unselected-yellow"
             break
         case "derpyBird1":
