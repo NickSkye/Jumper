@@ -36,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    // var lasttokens = Int(0)
     //let notificationName = Notification.Name("NotificationIdentifier")
     var running = Bool(false)
-    var birdType = "bird1"
+    var birdType = "steveBird1"
     var statLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
     var taptoplayLbl = SKLabelNode()
