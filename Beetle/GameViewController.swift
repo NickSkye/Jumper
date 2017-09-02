@@ -1,6 +1,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 
 class GameViewController: UIViewController, VungleSDKDelegate {
@@ -19,6 +20,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
         sdk?.delegate = self;
         // Register to receive notification
         NotificationCenter.default.addObserver(self, selector: #selector(self.playVungleAd), name: notificationName, object: nil)
+        setUpSound()
         let scene = GameScene(size: view.bounds.size)
         let skView = view as! SKView
         skView.showsFPS = false
@@ -144,5 +146,19 @@ class GameViewController: UIViewController, VungleSDKDelegate {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    var songPlayer : AVAudioPlayer!
+    
+    func setUpSound(){
+        let audioSession = AVAudioSession.sharedInstance()
+        
+        if audioSession.isOtherAudioPlaying{
+        try! audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
+        }
+    }
+    
+    func audioPlaying(){
+        
     }
 }

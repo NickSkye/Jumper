@@ -3,6 +3,9 @@ import AVFoundation
 class MusicHelper {
     static let sharedHelper = MusicHelper()
     var audioPlayer: AVAudioPlayer?
+    
+    let audioSession = AVAudioSession.sharedInstance()
+    
     var playing = false;
     //var song = "gno"
     func playBackgroundMusic() {
@@ -14,15 +17,19 @@ class MusicHelper {
         } */
         
         let aSound = URL(fileURLWithPath: Bundle.main.path(forResource: "DooblyDoo", ofType: "mp3")!)
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf:aSound)
-            audioPlayer!.numberOfLoops = -1
-            audioPlayer!.prepareToPlay()
-            audioPlayer!.play()
-            playing = true
-        } catch {
-            print("Cannot play the file")
+
+        if !audioSession.isOtherAudioPlaying{
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf:aSound)
+                audioPlayer!.numberOfLoops = -1
+                audioPlayer!.prepareToPlay()
+                audioPlayer!.play()
+                playing = true
+            } catch {
+                print("Cannot play the file")
+            }
         }
+        
     }
     
     func stopBackgroundMusic() {
