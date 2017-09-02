@@ -103,11 +103,11 @@ class GameViewController: UIViewController, VungleSDKDelegate {
             print("plus three tokens")
         }
         Variables.adAboutToPlay = false
-        MusicHelper.sharedHelper.playBackgroundMusic()
-        
     }
     func vungleSDKwillShowAd() {
-        MusicHelper.sharedHelper.stopBackgroundMusic()
+        if MusicHelper.sharedHelper.playing{
+            MusicHelper.sharedHelper.stopBackgroundMusic()
+        }
 
         print("__________vungleSDKwillShowAd")
         
@@ -154,7 +154,12 @@ class GameViewController: UIViewController, VungleSDKDelegate {
         let audioSession = AVAudioSession.sharedInstance()
         
         if audioSession.isOtherAudioPlaying{
-        try! audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
+            do{
+                try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
+                
+            }catch{
+            
+            }
         }
     }
     
