@@ -1204,9 +1204,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Check if the users high score is greater than the score they currently have in-game
         //If high score is less than current score then reset the high score to match the current score.
         if hScore < score {
+            let gameCenter = GameCenterViewController()
+            
             //Set current in-game score to a variable to be used for setting the high score
             let cScore = score
             GameData.shared().highScore = cScore
+
+            gameCenter.addScoreAndSubmitToGC()
         }
     }
     
