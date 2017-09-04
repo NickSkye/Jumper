@@ -86,6 +86,8 @@ class ShopScene: SKScene {
             //MusicHelper.sharedHelper.stopBackgroundMusic()
             Variables.adAboutToPlay = true
             
+            Variables.loaderView.center = (self.view?.center)!
+            
             self.view?.addSubview(Variables.loaderView)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
             

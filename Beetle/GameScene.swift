@@ -443,6 +443,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //for score
                     ////////////////PUT AD HERE?
                     Variables.adAboutToPlay = true
+                    
+                    Variables.loaderView.center = (self.view?.center)!
+                    
                     self.view?.addSubview(Variables.loaderView)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
                     Variables.lasttokens = tokens
@@ -619,6 +622,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if gamesplayed % 5 == 0 {
                 print("every fifth game ad played")
                 Variables.adAboutToPlay = true
+                
+                Variables.loaderView.center = (self.view?.center)!
+                
                 self.view?.addSubview(Variables.loaderView)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
             }

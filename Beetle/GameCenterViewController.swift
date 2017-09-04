@@ -23,6 +23,9 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
         assignbackground()
         print("GOT HERE")
         // Call the GC authentication controller
+        
+        Variables.loaderView.center = (self.view?.center)!
+        
         self.view?.addSubview(Variables.loaderView)
         authenticateLocalPlayer()
         //checkGCLeaderboard()

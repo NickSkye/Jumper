@@ -117,12 +117,8 @@ class GameCenterScene: SKScene {
         
         self.view?.window?.rootViewController?.present(GameCenterViewController(), animated: true, completion: nil)
        // showLeaderboard()
-        let hour = Calendar.current.component(.hour, from: Date())
-        print("hour \(hour)")
         var background = SKSpriteNode(imageNamed: "city")
-        if hour > 19 || hour < 7 {
-            background = SKSpriteNode(imageNamed: "plainstars")
-        }
+
         // let background = SKSpriteNode(imageNamed: "bg")
         background.anchorPoint = CGPoint.init(x: 0, y: 0)
         //background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
