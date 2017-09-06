@@ -101,8 +101,6 @@ class ShopScene: SKScene {
             
             //GameData.shared().currCoins = GameData.shared().currCoins + 2
             
-            //Set local variable to iCloid
-            tokensshop = GameData.shared().currCoins
             
             //Set label text to match local variable and amount from iCloud
             tokenshopLbl.text = "\(tokensshop) Coins"

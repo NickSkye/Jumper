@@ -20,7 +20,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
         sdk?.delegate = self;
         // Register to receive notification
         NotificationCenter.default.addObserver(self, selector: #selector(self.playVungleAd), name: notificationName, object: nil)
-        setUpSound()
+        //setUpSound()
         let scene = GameScene(size: view.bounds.size)
         let skView = view as! SKView
         skView.showsFPS = false
@@ -78,6 +78,7 @@ class GameViewController: UIViewController, VungleSDKDelegate {
     
     func vungleSDKWillCloseAd(withViewInfo viewInfo: [AnyHashable : Any]!) {
        print(viewInfo)
+        print("sdk will close ad") 
         Variables.loaderView.removeFromSuperview()
         print(("\(viewInfo["didDownload"]!)").contains("1"))
         print(Variables.lasttokens) // change this to determine whether tokens were got

@@ -1276,7 +1276,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      */
     func endGameProcess(){
         GameData.shared().save()
+
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        let gameOverScene = GameOverScene(size: self.size, score: self.score, tokens: self.tokens)
+        
         GameData.shared().reset()
+        
+        /*let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when){
+            self.view?.presentScene(gameOverScene, transition: reveal)
+        }*/
         
         updateUI()
     }

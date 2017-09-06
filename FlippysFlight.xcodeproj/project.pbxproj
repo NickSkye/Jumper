@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4133EDFA1F1104AE000BE200 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4133EDF91F1104AE000BE200 /* GameData.m */; };
 		4133EDFD1F110500000BE200 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4133EDFC1F110500000BE200 /* KeychainWrapper.m */; };
+		41426A9A1F5FC0860039753A /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41426A991F5FC0860039753A /* GameOverScene.swift */; };
 		D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D9341E3483A900754A1A /* AppDelegate.swift */; };
 		D9E9D9371E3483AA00754A1A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9361E3483AA00754A1A /* GameScene.sks */; };
 		D9E9D9391E3483AA00754A1A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9381E3483AA00754A1A /* Actions.sks */; };
@@ -61,6 +62,7 @@
 		4133EDF91F1104AE000BE200 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
 		4133EDFB1F110500000BE200 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		4133EDFC1F110500000BE200 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		41426A991F5FC0860039753A /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		D9E9D9311E3483A900754A1A /* Flippys Flight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flippys Flight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E9D9341E3483A900754A1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9E9D9361E3483AA00754A1A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				F3675ABF1F0DEF9E00B17007 /* GameCenterScene.swift */,
 				F35F098E1F134CAA000ADC44 /* GameCenterViewController.swift */,
 				F303E64D1F2DB4C700F1EB29 /* SpinnerView.swift */,
+				41426A991F5FC0860039753A /* GameOverScene.swift */,
 			);
 			name = FlippysFlight;
 			path = Beetle;
@@ -351,6 +354,7 @@
 				D9E9D93D1E3483AA00754A1A /* GameViewController.swift in Sources */,
 				4133EDFA1F1104AE000BE200 /* GameData.m in Sources */,
 				D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */,
+				41426A9A1F5FC0860039753A /* GameOverScene.swift in Sources */,
 				F32ABE3F1EEB5863000A217E /* ShopScene.swift in Sources */,
 				4133EDFD1F110500000BE200 /* KeychainWrapper.m in Sources */,
 				F37DE28A1EF8E35200FE524A /* ProfileScene.swift in Sources */,
