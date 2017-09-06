@@ -305,7 +305,7 @@ extension GameScene{
         
         ///////
         let scorerNode = SKSpriteNode(imageNamed: "pillar")
-        scorerNode.size = CGSize(width: 10, height: self.frame.height * 2)
+        scorerNode.size = CGSize(width: 50, height: self.frame.height * 2)
         scorerNode.position = CGPoint(x: (self.frame.width + (0.242 * self.frame.width)), y: self.frame.height / 2)
         scorerNode.physicsBody = SKPhysicsBody(rectangleOf: scorerNode.size)
         scorerNode.physicsBody?.affectedByGravity = false
