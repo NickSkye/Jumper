@@ -78,7 +78,7 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
     */
     func assignbackground(){
         
-        let background = UIImage(named: "city")
+        let background = UIImage(named: "samplebg")
         
         var imageView : UIImageView!
         imageView = UIImageView(frame: view.bounds)

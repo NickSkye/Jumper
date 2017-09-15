@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shopBtn = SKSpriteNode()
     var profileBtn = SKSpriteNode()
     var gcBtn = SKSpriteNode()
-    var background = SKSpriteNode(imageNamed: "city")
+    var background = SKSpriteNode(imageNamed: "samplebg")
    // var skinBtn = UIButton()
     var backBtn = SKSpriteNode()
     var logoImg = SKSpriteNode()
@@ -669,7 +669,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("hour \(hour)")
         for i in 0..<2 {
             
-            background = SKSpriteNode(imageNamed: "city")
+            background = SKSpriteNode(imageNamed: "samplebg")
             /*
             if hour > 19 || hour < 7 {
                 background = SKSpriteNode(imageNamed: "newBG")

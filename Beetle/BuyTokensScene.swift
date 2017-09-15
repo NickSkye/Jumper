@@ -329,7 +329,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     }
     
     func createBuyTokenScene() {
-        var background = SKSpriteNode(imageNamed: "city")
+        var background = SKSpriteNode(imageNamed: "samplebg")
 
         //let background = SKSpriteNode(imageNamed: "bg")
         background.anchorPoint = CGPoint.init(x: 0, y: 0)

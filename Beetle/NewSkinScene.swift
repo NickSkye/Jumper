@@ -501,7 +501,7 @@ class NewSkinScene: SKScene {
             background = SKSpriteNode(imageNamed: "newBG")
         }*/
         //let background = SKSpriteNode(imageNamed: "bg")
-        var background = SKSpriteNode(imageNamed: "city")
+        var background = SKSpriteNode(imageNamed: "samplebg")
         background.anchorPoint = CGPoint.init(x: 0, y: 0)
         //background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
         background.name = "background"
