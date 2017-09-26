@@ -48,7 +48,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
         createBuyTokenScene()
         // Set IAPS
         
-        if(SKPaymentQueue.canMakePayments()) {
+        if(IAPHelper.canMakePayments()) {
             print("IAP is enabled, loading")
             var productID:NSSet = NSSet(objects: "com.flippysflight.purchasefive", "com.flippysflight.purchasethirty", "com.flippysflight.purchaseseventyfive", "com.flippysflight.purchasetwohundred")
             var request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
@@ -133,7 +133,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
             
             switch trans.transactionState {
                 
-            case .purchased, .restored:
+            case .purchased:
                 print("buy, ok unlock iap here")
                 print(p.productIdentifier)
                 
@@ -195,6 +195,9 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
                 print("buy error")
                 queue.finishTransaction(trans)
                 break;
+            case .restored:
+                print("here")
+                queue.restoreCompletedTransactions()
             default:
                 print("default")
                 break;

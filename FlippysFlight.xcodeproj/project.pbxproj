@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411E75071F7367B700D855B8 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411E75061F7367B700D855B8 /* IAPHelper.swift */; };
 		4133EDFA1F1104AE000BE200 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4133EDF91F1104AE000BE200 /* GameData.m */; };
 		4133EDFD1F110500000BE200 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4133EDFC1F110500000BE200 /* KeychainWrapper.m */; };
 		41426A9A1F5FC0860039753A /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41426A991F5FC0860039753A /* GameOverScene.swift */; };
+		41EF85A51F74B148008B856F /* FlippyProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EF85A41F74B148008B856F /* FlippyProducts.swift */; };
 		D9E9D9351E3483A900754A1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E9D9341E3483A900754A1A /* AppDelegate.swift */; };
 		D9E9D9371E3483AA00754A1A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9361E3483AA00754A1A /* GameScene.sks */; };
 		D9E9D9391E3483AA00754A1A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9E9D9381E3483AA00754A1A /* Actions.sks */; };
@@ -58,11 +60,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		411E75061F7367B700D855B8 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		4133EDF81F1104AE000BE200 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		4133EDF91F1104AE000BE200 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
 		4133EDFB1F110500000BE200 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		4133EDFC1F110500000BE200 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		41426A991F5FC0860039753A /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		41EF85A41F74B148008B856F /* FlippyProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlippyProducts.swift; sourceTree = "<group>"; };
 		D9E9D9311E3483A900754A1A /* Flippys Flight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flippys Flight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E9D9341E3483A900754A1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9E9D9361E3483AA00754A1A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				F37DE2891EF8E35200FE524A /* ProfileScene.swift */,
 				F37DE28F1EFAFD2700FE524A /* NewSkinScene.swift */,
 				F3BD4CFC1EFD69C50016DC52 /* BuyTokensScene.swift */,
+				41EF85A41F74B148008B856F /* FlippyProducts.swift */,
+				411E75061F7367B700D855B8 /* IAPHelper.swift */,
 				F3675ABF1F0DEF9E00B17007 /* GameCenterScene.swift */,
 				F35F098E1F134CAA000ADC44 /* GameCenterViewController.swift */,
 				F303E64D1F2DB4C700F1EB29 /* SpinnerView.swift */,
@@ -348,6 +354,8 @@
 				D9E9D94D1E3484B900754A1A /* GameElements.swift in Sources */,
 				F37DE2901EFAFD2700FE524A /* NewSkinScene.swift in Sources */,
 				F35F098F1F134CAA000ADC44 /* GameCenterViewController.swift in Sources */,
+				411E75071F7367B700D855B8 /* IAPHelper.swift in Sources */,
+				41EF85A51F74B148008B856F /* FlippyProducts.swift in Sources */,
 				D9E9D93B1E3483AA00754A1A /* GameScene.swift in Sources */,
 				F3BD4CFD1EFD69C50016DC52 /* BuyTokensScene.swift in Sources */,
 				F303E64E1F2DB4C700F1EB29 /* SpinnerView.swift in Sources */,
