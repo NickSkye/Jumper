@@ -119,14 +119,14 @@ extension GameScene{
         tokensshop = GameData.shared().currCoins
         
         tokenshopLbl.position = CGPoint(x: 0 , y: -(0.041 * self.frame.height))
-        tokenshopLbl.text = "\(tokensshop) Coins"
+        tokenshopLbl.text = "\(tokensshop) coins"
         tokenshopLbl.zPosition = 5
         tokenshopLbl.fontSize = 12
         tokenshopLbl.fontColor = UIColor(red: 238/255, green: 221/255, blue: 130/255, alpha: 1)
         tokenshopLbl.fontName = "HelveticaNeue-Bold"
         
-        shopBtn = SKSpriteNode(imageNamed: "shop")
-        shopBtn.size = CGSize(width: (0.193 * self.frame.width), height: (0.109 * self.frame.height))
+        shopBtn = SKSpriteNode(imageNamed: "shop_button")
+        shopBtn.size = CGSize(width: (0.193 * self.frame.width), height: (0.120 * self.frame.height))
         shopBtn.position = CGPoint(x: self.frame.midX / 3 , y: self.frame.height * 0.1)
         shopBtn.zPosition = 7
         self.addChild(shopBtn)
@@ -239,7 +239,7 @@ extension GameScene{
         //Updates highscoreLbl with GameData highscore
         highscoreLbl.text = "Highest Score: " + String(GameData.shared().highScore)
         
-        tokenshopLbl.text = "\(GameData.shared().currCoins) Coins"
+        tokenshopLbl.text = "\(GameData.shared().currCoins) coins"
     }
     
     func createLogo() {
@@ -266,7 +266,7 @@ extension GameScene{
     func createTipLabel() -> SKLabelNode {
         let taptoplayLbl = SKLabelNode()
         taptoplayLbl.position = CGPoint(x:self.frame.midX, y: (self.frame.midY - (0.136 * self.frame.height)))
-        taptoplayLbl.text = "Tip: Walls can be fun to bounce on" //Tap anywhere to play
+        taptoplayLbl.text = "Tip: Buildings can be fun to bounce on" //Tap anywhere to play
         taptoplayLbl.fontColor = UIColor(red: 63/255, green: 79/255, blue: 145/255, alpha: 1.0)
         taptoplayLbl.zPosition = 5
         taptoplayLbl.fontSize = 20

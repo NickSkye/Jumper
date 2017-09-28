@@ -217,7 +217,6 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("1")
         
-        
         // Create the method you want to call (see target before)
         
         // put all menu items on scene here as else if using same notation. CTRL-f menu items to find where to remove them on this page
@@ -237,7 +236,7 @@ class BuyTokensScene: SKScene, SKPaymentTransactionObserver, SKProductsRequestDe
                 var prodID = product.productIdentifier
                 if(prodID == "com.flippysflight.purchasefive") {
                     p = product
-                    buyProduct()  //This is one of the functions we added earlier
+                    
                     break;
                 }
             }
