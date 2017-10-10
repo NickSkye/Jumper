@@ -768,7 +768,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //create menu buttons here
         createLogo()
         //skin
-        createShopBtn()
+        //createShopBtn()
         //createProfileBtn()
         createGameCenterBtn()
         
