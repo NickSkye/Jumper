@@ -118,6 +118,7 @@ class GameCenterScene: SKScene {
         self.view?.window?.rootViewController?.present(GameCenterViewController(), animated: true, completion: nil)
        // showLeaderboard()
         var background = SKSpriteNode(imageNamed: "samplebg")
+        
 
         // let background = SKSpriteNode(imageNamed: "bg")
         background.anchorPoint = CGPoint.init(x: 0, y: 0)

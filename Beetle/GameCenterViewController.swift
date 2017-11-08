@@ -88,10 +88,6 @@ class GameCenterViewController: UIViewController, GKGameCenterControllerDelegate
         imageView.center = view.center
         view.addSubview(imageView)
         self.view.sendSubview(toBack: imageView)
- 
-        
-       
- 
     }
     
     // MARK: - AUTHENTICATE LOCAL PLAYER

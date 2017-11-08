@@ -353,8 +353,8 @@ extension GameScene{
         wallPair = SKNode()
         wallPair.name = "wallPair"
         
-        let topWall = SKSpriteNode(imageNamed: "crane")
-        let btmWall = SKSpriteNode(imageNamed: "pillar")
+        let topWall = SKSpriteNode(imageNamed: "crane_new")
+        let btmWall = SKSpriteNode(imageNamed: "beam")
         //size for 6+ and 7+ height = 736
         var randomWidth = random(min: 380, max: 440)
         //size for 6 and 7

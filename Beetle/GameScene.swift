@@ -667,18 +667,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = SKColor(red: 80.0/255.0, green: 192.0/255.0, blue: 203.0/255.0, alpha: 1.0)
         let hour = Calendar.current.component(.hour, from: Date())
         print("hour \(hour)")
+
         for i in 0..<2 {
-            
             background = SKSpriteNode(imageNamed: "samplebg")
+        
             /*
             if hour > 19 || hour < 7 {
                 background = SKSpriteNode(imageNamed: "newBG")
             }
             */
             background.anchorPoint = CGPoint.init(x: 0, y: 0)
-            background.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
+
             background.name = "background"
-            background.size = (self.view?.bounds.size)!
+            let size = CGSize(width: background.size.width, height: (self.view?.bounds.size.height)!)
+            //background.size = (self.view?.bounds.size)!
+            background.size = size
+            background.position = CGPoint(x:CGFloat(i) * background.size.width, y:0)
             self.addChild(background)
             //DONT KNOW WHY ADDING THIS makes it alternate backgrounds
             /*
