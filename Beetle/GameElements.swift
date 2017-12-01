@@ -356,15 +356,35 @@ extension GameScene{
         let topWall = SKSpriteNode(imageNamed: "crane_new")
         let btmWall = SKSpriteNode(imageNamed: "beam")
         //size for 6+ and 7+ height = 736
-        var randomWidth = random(min: 380, max: 440)
+        var randomHeight = random(min: 380, max: 440)
         //size for 6 and 7
-        if self.frame.height <= 667 {
-            randomWidth = random(min: 550, max: 610)
+        
+        print(self.frame.height)
+        
+        
+        //iPhone 7 Plus & iPhone 8 Plus && iPhone X--Looks Good
+        if self.frame.height == 736 {
+            randomHeight = random(min: 380, max: 440)
         }
         
+        //iPhone 6 & iPhone 7 -- Its better, still could use a little improvement
+        if self.frame.height == 667 {
+            randomHeight = random(min: 560, max: 610)
+        }
         
-        topWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) + randomWidth)
-        btmWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) - randomWidth)
+        //iPhone 5S -- Need to fix width of objects
+        if self.frame.height == 568 {
+            randomHeight = random(min: 540, max: 568)
+        }
+    
+        
+        
+        print(randomHeight)
+        
+        
+        
+        topWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) + randomHeight)
+        btmWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) - randomHeight)
         killerPillarNode.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: self.frame.height / 2 - (0.6114 * self.frame.height))
         killerPillarTopNode.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: self.frame.height / 2 + (0.6114 * self.frame.height))
         topWall.setScale(0.5)

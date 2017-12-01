@@ -512,9 +512,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.addChild(pauseRestart)
                     print("HERE")
                     
-                    
-                    
-                  
                     /////////
                     
                     
@@ -684,15 +681,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             background.size = size
             background.position = CGPoint(x:CGFloat(i) * background.size.width, y:0)
             self.addChild(background)
-            //DONT KNOW WHY ADDING THIS makes it alternate backgrounds
-            /*
-            let secondBG = SKSpriteNode(imageNamed: "newBG")
-            secondBG.anchorPoint = CGPoint.init(x: 0, y: 0)
-            secondBG.position = CGPoint(x:CGFloat(i) * self.frame.width, y:0)
-            secondBG.name = "secondBG"
-            secondBG.size = (self.view?.bounds.size)!
-            self.addChild(secondBG)
-            */
             
         }
         
