@@ -376,13 +376,14 @@ extension GameScene{
         if self.frame.height == 568 {
             randomHeight = random(min: 540, max: 568)
         }
-    
         
-        
+        //iPad 5th Generation && iPad Air && iPad Air 2 && iPad Pro
+        if self.frame.height == 480 {
+            randomHeight = random(min: 540, max: 580)
+        }
+
         print(randomHeight)
-        
-        
-        
+
         topWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) + randomHeight)
         btmWall.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: (self.frame.height / 2) - randomHeight)
         killerPillarNode.position = CGPoint(x: self.frame.width + (0.06 * self.frame.width), y: self.frame.height / 2 - (0.6114 * self.frame.height))
