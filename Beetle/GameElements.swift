@@ -44,15 +44,21 @@ extension GameScene{
     }
     
     func createRestartBtn() {
-        restartBtn = SKSpriteNode(imageNamed: "restart")
+        /*restartBtn = SKSpriteNode(imageNamed: "restart")
         restartBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
         restartBtn.position = CGPoint(x: self.frame.width / 4, y: self.frame.height / 2)
         restartBtn.zPosition = 6
-        restartBtn.setScale(0)
+        restartBtn.setScale(0)*/
+        
+        
+        restartBtn = SKSpriteNode(imageNamed: "restart")
+        restartBtn.size = CGSize(width: (0.242 * self.frame.width), height: (0.136 * self.frame.height))
+        restartBtn.position =  CGPoint(x: self.frame.midX, y: self.frame.midY)
+        restartBtn.zPosition = 9
         self.addChild(restartBtn)
         print("restartbuttoncreated")
         
-        if tokens > 0 {
+        /*if tokens > 0 {
             adBtn = SKSpriteNode(imageNamed: "double-coins")
             adBtn.size = CGSize(width: (0.2422 * self.frame.width), height: (0.136 * self.frame.height))
             adBtn.position = CGPoint(x: self.frame.width * 0.75, y: self.frame.height / 2)
@@ -70,7 +76,7 @@ extension GameScene{
             self.addChild(adBtn)
             print("adbuttoncreated")
             adBtn.run(SKAction.scale(to: 1.0, duration: 0.3))
-        }
+        }*/
         
         /*
         secondChanceBtn = SKSpriteNode(imageNamed: "play")
